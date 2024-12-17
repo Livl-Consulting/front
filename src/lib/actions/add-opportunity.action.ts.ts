@@ -6,9 +6,9 @@ import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
 
 const fields = {
-    client: z.number().nonnegative(),
+    clientId: z.number().nonnegative(),
     products: z.array(z.object({
-        product: z.number().nonnegative(),
+        productId: z.number().nonnegative(),
         quantity: z.number().nonnegative()
     }))
 }
