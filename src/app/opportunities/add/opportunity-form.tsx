@@ -1,6 +1,7 @@
 "use client";
 
 import { ClientPicker } from "@/components/client-picker";
+import { ProductPicker } from "@/components/product-picker";
 import { FieldErrors } from "@/components/ui/field-errors";
 import { Label } from "@/components/ui/label";
 import { SubmitButton } from "@/components/ui/submit-button";
@@ -16,8 +17,13 @@ export const OpportunityForm: FC<{
   return (
     <form action={action} className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
-        <Label htmlFor="description">Client</Label>
+        <Label htmlFor="clientId">Client</Label>
         <ClientPicker name="clientId" initialClient={opportunity?.client} />
+        <FieldErrors errors={state?.errors?.clientId?._errors} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <Label htmlFor="products">Client</Label>
+        <ProductPicker name="products" />
         <FieldErrors errors={state?.errors?.clientId?._errors} />
       </div>
       <SubmitButton>Enregistrer</SubmitButton>
