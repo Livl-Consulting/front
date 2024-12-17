@@ -33,26 +33,7 @@ export const ClientForm: FC<{
               <Input type="text" id="email" defaultValue={client?.email} name="email"/>
               <FieldErrors errors={state?.errors?.email?._errors}/>
           </div>
-          {/*<div className="flex flex-col gap-2">*/}
-          {/*    <Label htmlFor="price">Prix</Label>*/}
-          {/*    <Input*/}
-          {/*        type="number"*/}
-          {/*        id="price"*/}
-          {/*        defaultValue={product?.price}*/}
-          {/*        name="price"*/}
-          {/*        min={0}*/}
-          {/*    />*/}
-          {/*    <FieldErrors errors={state?.errors?.price?._errors}/>*/}
-          {/*</div>*/}
-          {/*<div className="flex flex-col gap-2">*/}
-          {/*    <Label htmlFor="description">Description</Label>*/}
-          {/*    <Textarea*/}
-          {/*        id="description"*/}
-          {/*        defaultValue={product?.description}*/}
-          {/*        name="description"*/}
-          {/*    />*/}
-          {/*    <FieldErrors errors={state?.errors?.description?._errors}/>*/}
-          {/*</div>*/}
+
           <SubmitButton>Enregistrer</SubmitButton>
           <FieldErrors errors={state.message ? [state.message] : []}/>
       </form>
