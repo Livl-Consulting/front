@@ -4,16 +4,15 @@ import { z } from 'zod'
 import { FormState } from '../form-state';
 import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
+import { clientFields } from './add-client.action';
 
-export const clientFields = {
-    firstName: z.string({ message: "Le prénom doit être renseigné" }),
-    lastName: z.string({ message: "Le nom doit être renseigné" }),
-    email: z.string({ message: "L'email doit être renseigné" }).email("L'email n'est pas valide"),
+const fields = {
+    client: z.object(clientFields)
 }
 
-const schema = z.object(clientFields);
+const schema = z.object(fields);
 
-export const addClient = async (prevState: FormState<typeof clientFields>, formData: FormData): Promise<FormState<typeof clientFields>> => {
+export const addOpportunity = async (prevState: FormState<typeof fields>, formData: FormData): Promise<FormState<typeof fields>> => {
 
     const validated = schema.safeParse(parseFormDataToJSON(formData));
 
@@ -23,7 +22,8 @@ export const addClient = async (prevState: FormState<typeof clientFields>, formD
     }
 
     try {
-        const response = await fetch(`${apiUrl()}/clients`, {
+
+        const response = await fetch(`${apiUrl()}/opportunities`, {
             method: 'POST',
         });
 
@@ -33,7 +33,7 @@ export const addClient = async (prevState: FormState<typeof clientFields>, formD
         }
 
     } catch (error) {
-        console.error("Fail to sikish client", error);
+        console.error("Fail to edit artist", error);
         return { success: false, message: (error as Error).message };
     }
 
