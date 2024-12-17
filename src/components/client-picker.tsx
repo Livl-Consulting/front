@@ -71,7 +71,7 @@ export const ClientPicker: FC<Props> = ({ name, initialClient }) => {
           <div className="flex flex-col gap-2 p-4 border border-border rounded-lg">
             {client.firstName} {client.lastName}
           </div>
-          <input type="hidden" name={name} value={JSON.stringify(client)} />
+          <input type="hidden" name={name} value={client.id} />
         </>
       )}
     </>

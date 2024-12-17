@@ -17,8 +17,8 @@ export const OpportunityForm: FC<{
     <form action={action} className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <Label htmlFor="description">Client</Label>
-        <ClientPicker name="description" initialClient={opportunity?.client} />
-        <FieldErrors errors={state?.errors?.client?._errors} />
+        <ClientPicker name="clientId" initialClient={opportunity?.client} />
+        <FieldErrors errors={state?.errors?.clientId?._errors} />
       </div>
       <SubmitButton>Enregistrer</SubmitButton>
       <FieldErrors errors={state.message ? [state.message] : []} />
