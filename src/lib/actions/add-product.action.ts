@@ -5,15 +5,15 @@ import { FormState } from '../form-state';
 import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
 
-const fields = {
+export const productFields = {
     name: z.string({ message: "Le nom doit être renseigné" }),
     description: z.string().optional(),
     price: z.number().nonnegative()
 }
 
-const schema = z.object(fields);
+const schema = z.object(productFields);
 
-export const addProduct = async (prevState: FormState<typeof fields>, formData: FormData): Promise<FormState<typeof fields>> => {
+export const addProduct = async (prevState: FormState<typeof productFields>, formData: FormData): Promise<FormState<typeof productFields>> => {
 
     const validated = schema.safeParse(parseFormDataToJSON(formData));
 

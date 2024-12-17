@@ -5,9 +5,14 @@ import { FormState } from '../form-state';
 import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
 import { clientFields } from './add-client.action';
+import { productFields } from './add-product.action';
 
 const fields = {
-    client: z.object(clientFields)
+    client: z.object(clientFields),
+    products: z.array(z.object({
+        product: z.object(productFields),
+        quantity: z.number().nonnegative()
+    }))
 }
 
 const schema = z.object(fields);
