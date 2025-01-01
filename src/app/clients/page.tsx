@@ -13,8 +13,6 @@ import { Table } from "lucide-react";
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/products`);
 
-  console.log(response);
-
   if (!response.ok) {
     throw new Error(response.statusText);
   }

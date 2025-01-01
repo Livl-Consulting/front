@@ -6,6 +6,7 @@ export type Client = {
     updateAt: Date;
     lastName: string;
     firstName: string;
+    companyName?: string;
     email: string;
     opportunities: Opportunity[];
 }

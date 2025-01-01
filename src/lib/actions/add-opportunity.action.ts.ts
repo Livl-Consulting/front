@@ -5,15 +5,17 @@ import { FormState } from '../form-state';
 import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
 
-export const productFields = {
-    name: z.string({ message: "Le nom doit être renseigné" }),
-    description: z.string().optional(),
-    price: z.number().nonnegative()
+const fields = {
+    successProbability: z.number().int().min(0).max(100),
+    status : z.enum(['progress', 'validated', 'cancelled']),
+    price: z.number().nonnegative(),
+    clientId: z.number().nonnegative(),
+    productId: z.number().nonnegative(), 
 }
 
-const schema = z.object(productFields);
+const schema = z.object(fields);
 
-export const addProduct = async (prevState: FormState<typeof productFields>, formData: FormData): Promise<FormState<typeof productFields>> => {
+export const addOpportunity = async (prevState: FormState<typeof fields>, formData: FormData): Promise<FormState<typeof fields>> => {
 
     const validated = schema.safeParse(parseFormDataToJSON(formData));
 
@@ -24,7 +26,7 @@ export const addProduct = async (prevState: FormState<typeof productFields>, for
 
     try {
 
-        const response = await fetch(`${apiUrl()}/artists`, {
+        const response = await fetch(`${apiUrl()}/opportunities`, {
             method: 'POST',
         });
 

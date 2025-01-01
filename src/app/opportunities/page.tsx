@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   TableCaption,
   TableHeader,
@@ -7,38 +8,45 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { apiUrl } from "@/lib/utils";
-import { Product } from "@/models/product";
-import { Table } from "lucide-react";
+import { Opportunity } from "@/models/opportunity";
+import { Edit, Table } from "lucide-react";
+import Link from "next/link";
 
 export default async function Page() {
-  const response = await fetch(`${apiUrl()}/products`);
-
-  console.log(response);
+  const response = await fetch(`${apiUrl()}/opportunities`);
 
   if (!response.ok) {
     throw new Error(response.statusText);
   }
 
-  const products = (await response.json()) as Product[];
+  const products = (await response.json()) as Opportunity[];
 
   return (
     <Table>
-      <TableCaption>Vos produits</TableCaption>
+      <TableCaption>Vos opportunités</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Nom</TableHead>
+          <TableHead className="w-[100px]">Client</TableHead>
           <TableHead>Créé le</TableHead>
           <TableHead>Mise à jour</TableHead>
-          <TableHead className="text-right">Prix</TableHead>
+          <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {products.map((p) => (
           <TableRow key={p.id}>
-            <TableCell className="font-medium">{p.name}</TableCell>
+            <TableCell className="font-medium">
+              {p.client.firstName} {p.client.lastName}{" "}
+            </TableCell>
             <TableCell>{p.createdAt.toString()}</TableCell>
             <TableCell>{p.updateAt.toString()}</TableCell>
-            <TableCell className="text-right">{p.price}</TableCell>
+            <TableCell className="text-right">
+              <Button variant={"ghost"} size={"icon"} asChild>
+                <Link href={"#"}>
+                  <Edit size={16} />
+                </Link>
+              </Button>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
