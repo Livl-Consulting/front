@@ -6,10 +6,11 @@ import {
   TableHead,
   TableBody,
   TableCell,
+  Table,
 } from "@/components/ui/table";
 import { apiUrl } from "@/lib/utils";
 import { Opportunity } from "@/models/opportunity";
-import { Edit, Table } from "lucide-react";
+import { Edit } from "lucide-react";
 import Link from "next/link";
 
 export default async function Page() {

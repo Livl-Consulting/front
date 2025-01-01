@@ -5,10 +5,10 @@ import {
   TableHead,
   TableBody,
   TableCell,
+  Table
 } from "@/components/ui/table";
 import { apiUrl } from "@/lib/utils";
 import { Product } from "@/models/product";
-import { Table } from "lucide-react";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/products`);

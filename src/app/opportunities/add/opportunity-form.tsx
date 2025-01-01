@@ -22,8 +22,8 @@ export const OpportunityForm: FC<{
         <FieldErrors errors={state?.errors?.clientId?._errors} />
       </div>
       <div className="flex flex-col gap-2">
-        <Label htmlFor="products">Produit</Label>
-        <ProductPicker name="product" />
+        <Label htmlFor="productId">Produit</Label>
+        <ProductPicker name="productId" />
         <FieldErrors errors={state?.errors?.clientId?._errors} />
       </div>
       <SubmitButton>Enregistrer</SubmitButton>
