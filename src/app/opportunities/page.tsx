@@ -39,7 +39,7 @@ export default async function Page() {
               {p.client.firstName} {p.client.lastName}{" "}
             </TableCell>
             <TableCell>{p.createdAt.toString()}</TableCell>
-            <TableCell>{p.updateAt.toString()}</TableCell>
+            <TableCell>{p.updatedAt.toString()}</TableCell>
             <TableCell className="text-right">
               <Button variant={"ghost"} size={"icon"} asChild>
                 <Link href={"#"}>

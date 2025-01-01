@@ -1,7 +1,7 @@
 export type Product = {
     id: number;
     createdAt: Date;
-    updateAt: Date;
+    updatedAt: Date;
     name: string;
     description: string;
     price: number;

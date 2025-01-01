@@ -3,7 +3,7 @@ import {Opportunity} from "@/models/opportunity";
 export type Client = {
     id: number;
     createdAt: Date;
-    updateAt: Date;
+    updatedAt: Date;
     lastName: string;
     firstName: string;
     companyName?: string;

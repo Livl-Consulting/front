@@ -13,13 +13,12 @@ import { Table } from "lucide-react";
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/products`);
 
-  console.log(response);
-
   if (!response.ok) {
     throw new Error(response.statusText);
   }
 
   const products = (await response.json()) as Product[];
+  console.log(products);
 
   return (
     <Table>
@@ -37,7 +36,7 @@ export default async function Page() {
           <TableRow key={p.id}>
             <TableCell className="font-medium">{p.name}</TableCell>
             <TableCell>{p.createdAt.toString()}</TableCell>
-            <TableCell>{p.updateAt.toString()}</TableCell>
+            <TableCell>{p.updatedAt.toString()}</TableCell>
             <TableCell className="text-right">{p.price}</TableCell>
           </TableRow>
         ))}

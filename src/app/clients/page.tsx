@@ -35,7 +35,7 @@ export default async function Page() {
           <TableRow key={p.id}>
             <TableCell className="font-medium">{p.name}</TableCell>
             <TableCell>{p.createdAt.toString()}</TableCell>
-            <TableCell>{p.updateAt.toString()}</TableCell>
+            <TableCell>{p.updatedAt.toString()}</TableCell>
             <TableCell className="text-right">{p.price}</TableCell>
           </TableRow>
         ))}
