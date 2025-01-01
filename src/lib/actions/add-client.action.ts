@@ -5,15 +5,15 @@ import { FormState } from '../form-state';
 import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
 
-export const productFields = {
-    name: z.string({ message: "Le nom doit être renseigné" }),
-    description: z.string().optional(),
-    price: z.number().nonnegative()
+export const clientFields = {
+    firstName: z.string({ message: "Le prénom doit être renseigné" }),
+    lastName: z.string({ message: "Le nom doit être renseigné" }),
+    email: z.string({ message: "L'email doit être renseigné" }).email("L'email n'est pas valide"),
 }
 
-const schema = z.object(productFields);
+const schema = z.object(clientFields);
 
-export const addProduct = async (prevState: FormState<typeof productFields>, formData: FormData): Promise<FormState<typeof productFields>> => {
+export const addClient = async (prevState: FormState<typeof clientFields>, formData: FormData): Promise<FormState<typeof clientFields>> => {
 
     const validated = schema.safeParse(parseFormDataToJSON(formData));
 
@@ -23,8 +23,7 @@ export const addProduct = async (prevState: FormState<typeof productFields>, for
     }
 
     try {
-
-        const response = await fetch(`${apiUrl()}/artists`, {
+        const response = await fetch(`${apiUrl()}/clients`, {
             method: 'POST',
         });
 
@@ -34,7 +33,7 @@ export const addProduct = async (prevState: FormState<typeof productFields>, for
         }
 
     } catch (error) {
-        console.error("Fail to edit artist", error);
+        console.error("Fail to sikish client", error);
         return { success: false, message: (error as Error).message };
     }
 

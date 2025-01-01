@@ -41,21 +41,21 @@ export const CommandBoard = () => {
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Clients">
-          <CommandItem>
+          <CommandItem onSelect={() => push("/clients/add")}>
             <UserPlus />
             Nouveau client
           </CommandItem>
-          <CommandItem>
+          <CommandItem onSelect={() => push("/clients")}>
             <Users />
             Mes clients
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Opportunités">
-          <CommandItem>
+          <CommandItem onSelect={() => push("/opportunities/add")}>
             <Plus />
             Nouvelle opportunité
           </CommandItem>
-          <CommandItem>
+          <CommandItem onSelect={() => push("/opportunities")}>
             <Cat />
             Consulter mes opportunités
           </CommandItem>

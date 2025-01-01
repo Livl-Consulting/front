@@ -8,4 +8,5 @@ export type Opportunity = {
     status: 'progress' | 'validated' | 'cancelled';
     clientId: number;
     client: Client;
+    products: number;
 }
