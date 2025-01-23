@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table";
 import { apiUrl } from "@/lib/utils";
 import { Product } from "@/models/product";
+import {formatDate} from "@/lib/date-utils";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/products`);
@@ -35,8 +36,8 @@ export default async function Page() {
         {products.map((p) => (
           <TableRow key={p.id}>
             <TableCell className="font-medium">{p.name}</TableCell>
-            <TableCell>{p.createdAt.toString()}</TableCell>
-            <TableCell>{p.updatedAt.toString()}</TableCell>
+            <TableCell>{formatDate(p.createdAt)}</TableCell>
+            <TableCell>{formatDate(p.updatedAt)}</TableCell>
             <TableCell className="text-right">{p.price}</TableCell>
           </TableRow>
         ))}
