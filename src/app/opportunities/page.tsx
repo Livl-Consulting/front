@@ -12,6 +12,7 @@ import { apiUrl } from "@/lib/utils";
 import { Opportunity } from "@/models/opportunity";
 import { Edit } from "lucide-react";
 import Link from "next/link";
+import {formatDate} from "@/lib/date-utils";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/opportunities`);
@@ -20,7 +21,7 @@ export default async function Page() {
     throw new Error(response.statusText);
   }
 
-  const products = (await response.json()) as Opportunity[];
+  const opportunities = (await response.json()) as Opportunity[];
 
   return (
     <Table>
@@ -28,19 +29,25 @@ export default async function Page() {
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">Client</TableHead>
-          <TableHead>Créé le</TableHead>
+          <TableHead className="w-[100px]">Produit</TableHead>
+          <TableHead className="w-[100px]">Status</TableHead>
+          <TableHead className="w-[100px]">Probabilité de succès</TableHead>
+          <TableHead className="w-[100px]">Prix</TableHead>
           <TableHead>Mise à jour</TableHead>
           <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {products.map((p) => (
-          <TableRow key={p.id}>
+        {opportunities.map((opportunity) => (
+          <TableRow key={opportunity.id}>
             <TableCell className="font-medium">
-              {p.client.firstName} {p.client.lastName}{" "}
+              {opportunity.client.firstName} {opportunity.client.lastName}{" "}
             </TableCell>
-            <TableCell>{p.createdAt.toString()}</TableCell>
-            <TableCell>{p.updatedAt.toString()}</TableCell>
+            <TableCell className="font-medium">{opportunity.product.name}</TableCell>
+            <TableCell>{opportunity.status}</TableCell>
+            <TableCell>{opportunity.successProbability}%</TableCell>
+            <TableCell>{opportunity.product.price}</TableCell>
+            <TableCell>{formatDate(opportunity.updatedAt)}</TableCell>
             <TableCell className="text-right">
               <Button variant={"ghost"} size={"icon"} asChild>
                 <Link href={"#"}>
