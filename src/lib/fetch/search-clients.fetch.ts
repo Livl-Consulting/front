@@ -14,7 +14,7 @@ export const fetchClients = async (query: string): Promise<{ results: Client[] }
 
     const params = new URLSearchParams({ query });
 
-    const response = await fetch(`${API_URL}/api/clients/search?${params.toString()}`, {
+    const response = await fetch(`${API_URL}/clients/search?${params.toString()}`, {
         next: {
             tags: ['clients', `clients:${query}`],
             revalidate: 3600
