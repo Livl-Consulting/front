@@ -5,7 +5,7 @@ import { FormState } from '../form-state';
 import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
 
-export const productFields = {
+const productFields = {
     name: z.string({ message: "Le nom doit être renseigné" }),
     description: z.string().optional(),
     price: z.number().nonnegative()

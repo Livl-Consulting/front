@@ -5,7 +5,7 @@ import { FormState } from '../form-state';
 import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
 
-export const clientFields = {
+const clientFields = {
     firstName: z.string({ message: "Le prénom doit être renseigné" }),
     lastName: z.string({ message: "Le nom doit être renseigné" }),
     companyName: z.string({ message: "Le nom de l'entreprise doit être renseigné" }).optional(),
