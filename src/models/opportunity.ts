@@ -1,6 +1,6 @@
 import { Client } from "@/models/client";
 import { Product } from "./product";
-import {OpportunityStatus} from "@/enums/opportunity-status";
+import {OpportunityStatus} from "@/models/opportunity-status.type";
 
 export type Opportunity = {
     id: number;
