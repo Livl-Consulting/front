@@ -24,8 +24,9 @@ export const addProduct = async (prevState: FormState<typeof productFields>, for
 
     try {
 
-        const response = await fetch(`${apiUrl()}/artists`, {
+        const response = await fetch(`${apiUrl()}/products`, {
             method: 'POST',
+            body: formData,
         });
 
         if (!response.ok) {
