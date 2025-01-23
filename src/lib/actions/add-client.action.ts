@@ -26,6 +26,7 @@ export const addClient = async (prevState: FormState<typeof clientFields>, formD
     try {
         const response = await fetch(`${apiUrl()}/clients`, {
             method: 'POST',
+            body: formData,
         });
 
         if (!response.ok) {
@@ -34,10 +35,10 @@ export const addClient = async (prevState: FormState<typeof clientFields>, formD
         }
 
     } catch (error) {
-        console.error("Fail to sikish client", error);
+        console.error("Fail to sikish a new client", error);
         return { success: false, message: (error as Error).message };
     }
 
-    redirect('/products');
+    redirect('/clients');
 
 }
