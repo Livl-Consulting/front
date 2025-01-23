@@ -10,8 +10,8 @@ export const Footer = () => (
     >
       <Image
         aria-hidden
-        src="/globe.svg"
-        alt="Globe icon"
+        src="/github-mark.svg"
+        alt="Github icon"
         width={16}
         height={16}
       />
