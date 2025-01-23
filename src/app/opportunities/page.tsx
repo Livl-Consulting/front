@@ -13,6 +13,7 @@ import { Opportunity } from "@/models/opportunity";
 import { Edit } from "lucide-react";
 import Link from "next/link";
 import {formatDate} from "@/lib/date-utils";
+import {OpportunityStatusBadge} from "@/components/opportunity-status-badge";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/opportunities`);
@@ -28,9 +29,9 @@ export default async function Page() {
       <TableCaption>Vos opportunités</TableCaption>
       <TableHeader>
         <TableRow>
+          <TableHead className="w-[100px]">Status</TableHead>
           <TableHead className="w-[100px]">Client</TableHead>
           <TableHead className="w-[100px]">Produit</TableHead>
-          <TableHead className="w-[100px]">Status</TableHead>
           <TableHead className="w-[100px]">Probabilité de succès</TableHead>
           <TableHead className="w-[100px]">Prix</TableHead>
           <TableHead>Mise à jour</TableHead>
@@ -40,11 +41,13 @@ export default async function Page() {
       <TableBody>
         {opportunities.map((opportunity) => (
           <TableRow key={opportunity.id}>
+            <TableCell>
+              <OpportunityStatusBadge status={opportunity.status} />
+            </TableCell>
             <TableCell className="font-medium">
               {opportunity.client.firstName} {opportunity.client.lastName}{" "}
             </TableCell>
             <TableCell className="font-medium">{opportunity.product.name}</TableCell>
-            <TableCell>{opportunity.status}</TableCell>
             <TableCell>{opportunity.successProbability}%</TableCell>
             <TableCell>{opportunity.product.price}</TableCell>
             <TableCell>{formatDate(opportunity.updatedAt)}</TableCell>
