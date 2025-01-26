@@ -19,7 +19,6 @@ export default async function Page() {
   }
 
   const products = (await response.json()) as Product[];
-  console.log(products);
 
   return (
     <Table>

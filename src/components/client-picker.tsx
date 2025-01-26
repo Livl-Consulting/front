@@ -39,13 +39,11 @@ export const ClientPicker: FC<Props> = ({ name, initialClient }) => {
       setAutocompleteOptions([]);
       return;
     }
-
     updateAutocomplete(search);
   }, [search]);
 
   const updateAutocomplete = async (search: string) => {
     const clients = await searchClients(search);
-
     setAutocompleteOptions(
       clients.map((client) => ({
         value: JSON.stringify(client),

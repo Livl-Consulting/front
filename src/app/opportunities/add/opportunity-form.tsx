@@ -59,7 +59,6 @@ export const OpportunityForm: FC<{
                       {/*<SelectItem value="m@support.com">m@support.com</SelectItem>*/}
                       {
                           Object.entries(labelsByOpportunityStatus).map(([key, value]) => {
-                              console.log(key, value);
                               return (
                                   <SelectItem key={key} value={value}>{value}</SelectItem>
                               )

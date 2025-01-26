@@ -17,9 +17,9 @@ import { cn } from "@/lib/utils";
 export type AutocompleteOption = Record<"value" | "label", string>;
 
 type Props = {
-  options?: AutocompleteOption[];
+  options?: AutocompleteOption[]; // Things that we can select
   onSelectionChange: (value: AutocompleteOption[]) => void;
-  selection: AutocompleteOption[];
+  selection: AutocompleteOption[]; // Things that are selected
   onInputChange?: (value: string) => void;
   value?: string;
   className?: string;

@@ -41,7 +41,6 @@ export const ProductPicker: FC<Props> = ({ name, initialProducts }) => {
       setAutocompleteOptions([]);
       return;
     }
-
     updateAutocomplete(search);
   }, [search]);
 

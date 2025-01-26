@@ -13,7 +13,6 @@ export const fetchClients = async (query: string): Promise<{ results: Client[] }
     const API_URL = apiUrl();
 
     const params = new URLSearchParams({ query });
-
     const response = await fetch(`${API_URL}/clients/search?${params.toString()}`, {
         next: {
             tags: ['clients', `clients:${query}`],
@@ -26,6 +25,7 @@ export const fetchClients = async (query: string): Promise<{ results: Client[] }
         throw new Error(`${response.statusText} ${data} (clients:${query})`);
     }
 
-    return await response.json();
-
+    return {
+        results: await response.json()
+    };
 }
