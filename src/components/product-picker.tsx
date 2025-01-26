@@ -20,7 +20,7 @@ export const ProductPicker: FC<Props> = ({ name, initialProducts }) => {
   const [search, setSearch] = useState<string>("");
   const [products, setProducts] = useState<Product[]>(initialProducts ?? []);
 
-  const onAddArtist = (v: AutocompleteOption[]) => {
+  const onAddProduct = (v: AutocompleteOption[]) => {
     if (!v.length) {
       return;
     }
@@ -60,7 +60,7 @@ export const ProductPicker: FC<Props> = ({ name, initialProducts }) => {
       <MultiSelect
         options={autocompleteOptions}
         selection={[]}
-        onSelectionChange={onAddArtist}
+        onSelectionChange={onAddProduct}
         onInputChange={setSearch}
         value={search}
         placeholder="Ajouter un produit ..."

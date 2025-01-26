@@ -19,7 +19,7 @@ export const ClientPicker: FC<Props> = ({ name, initialClient }) => {
     initialClient
   );
 
-  const onAddArtist = (v: AutocompleteOption[]) => {
+  const onAddClient = (v: AutocompleteOption[]) => {
     if (!v.length) {
       return;
     }
@@ -57,7 +57,7 @@ export const ClientPicker: FC<Props> = ({ name, initialClient }) => {
       <MultiSelect
         options={autocompleteOptions}
         selection={[]}
-        onSelectionChange={onAddArtist}
+        onSelectionChange={onAddClient}
         onInputChange={setSearch}
         value={search}
         placeholder="Choisir un client ..."

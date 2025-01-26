@@ -14,7 +14,7 @@ export const fetchProducts = async (query: string): Promise<{ results: Product[]
 
     const params = new URLSearchParams({ query });
 
-    const response = await fetch(`${API_URL}/api/products/search?${params.toString()}`, {
+    const response = await fetch(`${API_URL}/products/search?${params.toString()}`, {
         next: {
             tags: ['products', `products:${query}`],
             revalidate: 3600
@@ -26,6 +26,8 @@ export const fetchProducts = async (query: string): Promise<{ results: Product[]
         throw new Error(`${response.statusText} ${data} (products:${query})`);
     }
 
-    return await response.json();
+    return {
+        results: await response.json()
+    }
 
 }
