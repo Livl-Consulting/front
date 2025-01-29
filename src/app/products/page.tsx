@@ -10,6 +10,7 @@ import {
 import { apiUrl } from "@/lib/utils";
 import { Product } from "@/models/product";
 import {formatDate} from "@/lib/date-utils";
+import { HeaderTitle } from "@/components/header-title";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/products`);
@@ -21,36 +22,33 @@ export default async function Page() {
   const products = (await response.json()) as Product[];
 
   return (
-    <Table>
-      <TableCaption>Vos produits</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[100px]">Nom</TableHead>
-          <TableHead>Créé le</TableHead>
-          <TableHead>Mise à jour</TableHead>
-          <TableHead className="text-right">Prix</TableHead>
-          <TableHead className="text-right">Type</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {products.map((p) => (
-          <TableRow key={p.id}>
-            <TableCell className="font-medium">{p.name}</TableCell>
-            <TableCell>{formatDate(p.createdAt)}</TableCell>
-            <TableCell>{formatDate(p.updatedAt)}</TableCell>
-            <TableCell className="text-right">{p.price}</TableCell>
-            <TableCell className="text-right">
-              {p.type === 'sale' ? 'Vente' : p.type === 'purchase' ? 'Achat' : 'Vente & Achat'}
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-      {/* <TableFooter>
+    <>
+      <HeaderTitle goBackUrlLink="/" title="Produits" />
+      <Table>
+        <TableCaption>Vos produits</TableCaption>
+        <TableHeader>
           <TableRow>
-            <TableCell colSpan={3}>Total</TableCell>
-            <TableCell className="text-right">$2,500.00</TableCell>
+            <TableHead className="w-[100px]">Nom</TableHead>
+            <TableHead>Créé le</TableHead>
+            <TableHead>Mise à jour</TableHead>
+            <TableHead className="text-right">Prix</TableHead>
+            <TableHead className="text-right">Type</TableHead>
           </TableRow>
-        </TableFooter> */}
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {products.map((p) => (
+            <TableRow key={p.id}>
+              <TableCell className="font-medium">{p.name}</TableCell>
+              <TableCell>{formatDate(p.createdAt)}</TableCell>
+              <TableCell>{formatDate(p.updatedAt)}</TableCell>
+              <TableCell className="text-right">{p.price}</TableCell>
+              <TableCell className="text-right">
+                {p.type === 'sale' ? 'Vente' : p.type === 'purchase' ? 'Achat' : 'Vente & Achat'}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </>
   );
 }

@@ -4,6 +4,7 @@ import { SupplierPaymentsForm } from "./supplier-payments-form";
 import { SupplierPayment } from "@/models/supplier-payment";
 import { PurchaseOrder } from "@/models/purchase-order";
 import { labelsPaymentMethod } from "@/models/labels-by-method-payment";
+import { HeaderTitle } from "@/components/header-title";
 
 export default async function Page({ params }: { params: Promise<{ slug: number }>}) {
   const orderPurchaseId = (await params).slug;
@@ -19,8 +20,8 @@ export default async function Page({ params }: { params: Promise<{ slug: number 
   const payments = await response.json() as SupplierPayment[];
 
   return (
-    <div className="flex flex-col gap-8 mt-10">
-      <h1 className="text-xl font-bold">Paiements pour la commande #{orderPurchase.id}</h1>
+    <div className="flex flex-col gap-8 ">
+      <HeaderTitle goBackUrlLink={`/purchase-orders`} title={`Paiment commande n°${orderPurchase.id}`} />
       <Table>
         <TableHeader>
           <TableRow>

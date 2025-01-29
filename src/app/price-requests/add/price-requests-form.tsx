@@ -39,7 +39,7 @@ export const PriceRequestForm: FC<{
               <Label htmlFor="description">Status</Label>
               <Select name="status">
                   <SelectTrigger>
-                      <SelectValue placeholder="Status de la demande"/>
+                      <SelectValue placeholder=""/>
                   </SelectTrigger>
                   <SelectContent>
                       {

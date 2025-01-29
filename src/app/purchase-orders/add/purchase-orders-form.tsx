@@ -38,7 +38,7 @@ export const PurchaseOrdersForm: FC<{
               <Label htmlFor="description">Status</Label>
               <Select name="status">
                   <SelectTrigger>
-                      <SelectValue placeholder="Status de la commande"/>
+                      <SelectValue placeholder=""/>
                   </SelectTrigger>
                   <SelectContent>
                       {

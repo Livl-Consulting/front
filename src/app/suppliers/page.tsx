@@ -10,6 +10,7 @@ import {
 import { apiUrl } from "@/lib/utils";
 import {formatDate} from "@/lib/date-utils";
 import { Supplier } from "@/models/supplier";
+import { HeaderTitle } from "@/components/header-title";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/suppliers`);
@@ -21,8 +22,10 @@ export default async function Page() {
   const suppliers = (await response.json()) as Supplier[];
 
   return (
+    <>
+    <HeaderTitle goBackUrlLink="/" title="Fournisseurs" />
     <Table>
-      <TableCaption>Vos suppliers</TableCaption>
+      <TableCaption>Vos fournisseurs</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">Prénom</TableHead>
@@ -44,5 +47,6 @@ export default async function Page() {
         ))}
       </TableBody>
     </Table>
+    </>
   );
 }

@@ -1,9 +1,10 @@
+import { HeaderTitle } from "@/components/header-title";
 import { PriceRequestForm } from "./price-requests-form";
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-12 my-20">
-      <h1 className="text-xl font-bold">Saisir une demande de prix</h1>
+    <div className="flex flex-col">
+      <HeaderTitle goBackUrlLink="/price-requests" title="Ajouter une demande de prix" />
       <PriceRequestForm />
     </div>
   );

@@ -1,9 +1,10 @@
+import { HeaderTitle } from "@/components/header-title";
 import { SupplierForm } from "./supplier-form";
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-12 my-20">
-      <h1 className="text-xl font-bold">Ajouter un fournisseur</h1>
+    <div className="flex flex-col">
+      <HeaderTitle goBackUrlLink="/suppliers" title="Ajouter un fournisseur" />
       <SupplierForm />
     </div>
   );

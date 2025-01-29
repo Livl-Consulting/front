@@ -15,6 +15,7 @@ import Link from "next/link";
 import {formatDate} from "@/lib/date-utils";
 import {ProcessStatusBadge} from "@/components/process-status-badge";
 import { labelsByProcessStatus } from "@/models/labels-by-opportunity-status";
+import { HeaderTitle } from "@/components/header-title";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/opportunities`);
@@ -26,44 +27,47 @@ export default async function Page() {
   const opportunities = (await response.json()) as Opportunity[];
 
   return (
-    <Table>
-      <TableCaption>Vos opportunités</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[100px]">Status</TableHead>
-          <TableHead className="w-[100px]">Client</TableHead>
-          <TableHead className="w-[100px]">Produit</TableHead>
-          <TableHead className="w-[100px]">Prix produit</TableHead>
-          <TableHead className="w-[100px]">Probabilité de succès</TableHead>
-          <TableHead className="w-[100px]">Prix opportunité</TableHead>
-          <TableHead>Mise à jour</TableHead>
-          <TableHead className="text-right">Actions</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {opportunities.map((opportunity) => (
-          <TableRow key={opportunity.id}>
-            <TableCell>
-              <ProcessStatusBadge status={opportunity.status} props={labelsByProcessStatus[opportunity.status]} />
-            </TableCell>
-            <TableCell className="font-medium">
-              {opportunity.client.firstName} {opportunity.client.lastName}{" "}
-            </TableCell>
-            <TableCell className="font-medium">{opportunity.product.name}</TableCell>
-            <TableCell>{opportunity.product.price}</TableCell>
-            <TableCell>{opportunity.successProbability}%</TableCell>
-            <TableCell>{opportunity.price}</TableCell>
-            <TableCell>{formatDate(opportunity.updatedAt)}</TableCell>
-            <TableCell className="text-right">
-              <Button variant={"ghost"} size={"icon"} asChild>
-                <Link href={"#"}>
-                  <Edit size={16} />
-                </Link>
-              </Button>
-            </TableCell>
+    <>
+      <HeaderTitle goBackUrlLink="/" title="Opportunités" />
+      <Table>
+        <TableCaption>Vos opportunités</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[100px]">Status</TableHead>
+            <TableHead className="w-[100px]">Client</TableHead>
+            <TableHead className="w-[100px]">Produit</TableHead>
+            <TableHead className="w-[100px]">Prix produit</TableHead>
+            <TableHead className="w-[100px]">Probabilité de succès</TableHead>
+            <TableHead className="w-[100px]">Prix opportunité</TableHead>
+            <TableHead>Mise à jour</TableHead>
+            <TableHead className="text-right">Actions</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {opportunities.map((opportunity) => (
+            <TableRow key={opportunity.id}>
+              <TableCell>
+                <ProcessStatusBadge status={opportunity.status} props={labelsByProcessStatus[opportunity.status]} />
+              </TableCell>
+              <TableCell className="font-medium">
+                {opportunity.client.firstName} {opportunity.client.lastName}{" "}
+              </TableCell>
+              <TableCell className="font-medium">{opportunity.product.name}</TableCell>
+              <TableCell>{opportunity.product.price}</TableCell>
+              <TableCell>{opportunity.successProbability}%</TableCell>
+              <TableCell>{opportunity.price}</TableCell>
+              <TableCell>{formatDate(opportunity.updatedAt)}</TableCell>
+              <TableCell className="text-right">
+                <Button variant={"ghost"} size={"icon"} asChild>
+                  <Link href={"#"}>
+                    <Edit size={16} />
+                  </Link>
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </>
   );
 }
