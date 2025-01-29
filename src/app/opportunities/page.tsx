@@ -13,7 +13,7 @@ import { Opportunity } from "@/models/opportunity";
 import { Edit } from "lucide-react";
 import Link from "next/link";
 import {formatDate} from "@/lib/date-utils";
-import {OpportunityStatusBadge} from "@/components/opportunity-status-badge";
+import {ProcessStatusBadge} from "@/components/process-status-badge";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/opportunities`);
@@ -42,7 +42,7 @@ export default async function Page() {
         {opportunities.map((opportunity) => (
           <TableRow key={opportunity.id}>
             <TableCell>
-              <OpportunityStatusBadge status={opportunity.status} />
+              <ProcessStatusBadge status={opportunity.status} />
             </TableCell>
             <TableCell className="font-medium">
               {opportunity.client.firstName} {opportunity.client.lastName}{" "}
@@ -61,12 +61,6 @@ export default async function Page() {
           </TableRow>
         ))}
       </TableBody>
-      {/* <TableFooter>
-          <TableRow>
-            <TableCell colSpan={3}>Total</TableCell>
-            <TableCell className="text-right">$2,500.00</TableCell>
-          </TableRow>
-        </TableFooter> */}
     </Table>
   );
 }

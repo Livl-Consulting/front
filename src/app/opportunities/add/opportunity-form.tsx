@@ -16,7 +16,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import {labelsByOpportunityStatus} from "@/models/labels-by-opportunity-status";
+import {labelsByProcessStatus} from "@/models/labels-by-opportunity-status";
 
 export const OpportunityForm: FC<{
   opportunity?: Opportunity;
@@ -54,11 +54,8 @@ export const OpportunityForm: FC<{
                       <SelectValue placeholder="Status de l'opportunité"/>
                   </SelectTrigger>
                   <SelectContent>
-                      {/*<SelectItem value="m@example.com">m@example.com</SelectItem>*/}
-                      {/*<SelectItem value="m@google.com">m@google.com</SelectItem>*/}
-                      {/*<SelectItem value="m@support.com">m@support.com</SelectItem>*/}
                       {
-                          Object.entries(labelsByOpportunityStatus).map(([key, value]) => {
+                          Object.entries(labelsByProcessStatus).map(([key, value]) => {
                               return (
                                   <SelectItem key={key} value={value}>{value}</SelectItem>
                               )

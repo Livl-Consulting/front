@@ -17,7 +17,8 @@ export const fetchClients = async (query: string): Promise<{ results: Client[] }
         next: {
             tags: ['clients', `clients:${query}`],
             revalidate: 3600
-        }
+        },
+        cache: 'no-cache'
     });
 
     if (!response.ok) {

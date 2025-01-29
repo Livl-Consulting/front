@@ -19,6 +19,7 @@ import {
   CirclePlus,
   ShoppingCart,
   File,
+  CircleHelp,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -40,6 +41,7 @@ export const CommandBoard = () => {
             Mes produits
           </CommandItem>
         </CommandGroup>
+        <CommandSeparator />
         <CommandGroup heading="Clients">
           <CommandItem onSelect={() => push("/clients/add")}>
             <UserPlus />
@@ -48,16 +50,6 @@ export const CommandBoard = () => {
           <CommandItem onSelect={() => push("/clients")}>
             <Users />
             Mes clients
-          </CommandItem>
-        </CommandGroup>
-        <CommandGroup heading="Fournisseurs">
-          <CommandItem onSelect={() => push("/suppliers/add")}>
-            <UserPlus />
-            Nouveau fournisseur
-          </CommandItem>
-          <CommandItem onSelect={() => push("/suppliers")}>
-            <Users />
-            Mes fournisseurs
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Opportunités de vente">
@@ -98,6 +90,27 @@ export const CommandBoard = () => {
           <CommandItem>
             <File />
             Consulter mes règlements
+          </CommandItem>
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Fournisseurs">
+          <CommandItem onSelect={() => push("/suppliers/add")}>
+            <UserPlus />
+            Nouveau fournisseur
+          </CommandItem>
+          <CommandItem onSelect={() => push("/suppliers")}>
+            <Users />
+            Mes fournisseurs
+          </CommandItem>
+        </CommandGroup>
+        <CommandGroup heading="Saisie de demandes de prix - Achats">
+          <CommandItem onSelect={() => push("/price-requests/add")}>
+            <Plus />
+            Saisir une demande de prix
+          </CommandItem>
+          <CommandItem onSelect={() => push("/price-requests")}>
+            <CircleHelp />
+            Consulter mes demandes de prix
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />

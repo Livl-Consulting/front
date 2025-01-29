@@ -1,25 +1,25 @@
-import { Client } from "@/models/client";
+import { Supplier } from "@/models/supplier";
 import { FC, useEffect, useState } from "react";
 import { AutocompleteOption, MultiSelect } from "./ui/multi-select";
-import { searchClients } from "@/lib/actions/search-clients.action";
 import { SearchIcon } from "lucide-react";
+import { searchSuppliers } from "@/lib/actions/search-suppliers.action";
 
 type Props = {
   name: string;
-  initialClient?: Partial<Client>;
+  initialSupplier?: Partial<Supplier>;
 };
 
-export const ClientPicker: FC<Props> = ({ name, initialClient }) => {
+export const SupplierPicker: FC<Props> = ({ name, initialSupplier }) => {
   const [autocompleteOptions, setAutocompleteOptions] = useState<
     AutocompleteOption[]
   >([]);
 
   const [search, setSearch] = useState<string>("");
-  const [client, setClient] = useState<Partial<Client> | undefined>(
-    initialClient
+  const [supplier, setSupplier] = useState<Partial<Supplier> | undefined>(
+    initialSupplier
   );
 
-  const onAddClient = (v: AutocompleteOption[]) => {
+  const onAddSupplier = (v: AutocompleteOption[]) => {
     if (!v.length) {
       return;
     }
@@ -30,7 +30,7 @@ export const ClientPicker: FC<Props> = ({ name, initialClient }) => {
       // we can't add them manually for now
       return;
     } else {
-      setClient(JSON.parse(value) as Client);
+      setSupplier(JSON.parse(value) as Supplier);
     }
   };
 
@@ -43,11 +43,11 @@ export const ClientPicker: FC<Props> = ({ name, initialClient }) => {
   }, [search]);
 
   const updateAutocomplete = async (search: string) => {
-    const clients = await searchClients(search);
+    const suppliers = await searchSuppliers(search);
     setAutocompleteOptions(
-      clients.map((client) => ({
-        value: JSON.stringify(client),
-        label: `${client.firstName} ${client.lastName} - (${client.companyName})`,
+      suppliers.map((supplier) => ({
+        value: JSON.stringify(supplier),
+        label: `${supplier.firstName} ${supplier.lastName} - (${supplier.companyName})`,
       }))
     );
   };
@@ -57,19 +57,19 @@ export const ClientPicker: FC<Props> = ({ name, initialClient }) => {
       <MultiSelect
         options={autocompleteOptions}
         selection={[]}
-        onSelectionChange={onAddClient}
+        onSelectionChange={onAddSupplier}
         onInputChange={setSearch}
         value={search}
-        placeholder="Choisir un client ..."
+        placeholder="Choisir un fournisseur ..."
         leading={<SearchIcon className="w-4 h-4 text-muted-foreground" />}
         addLabel={`Ajouter "${search}"`}
       />
-      {!!client && (
+      {!!supplier && (
         <>
           <div className="flex flex-col gap-2 p-4 border border-border rounded-lg">
-            {client.firstName} {client.lastName} - ({client.companyName})
+            {supplier.firstName} {supplier.lastName} - ({supplier.companyName})
           </div>
-          <input type="hidden" name={name} value={client.id} />
+          <input type="hidden" name={name} value={supplier.id} />
         </>
       )}
     </>

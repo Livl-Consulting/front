@@ -1,7 +1,7 @@
-import {OpportunityStatus} from "@/models/opportunity-status.type";
+import {ProcessStatus} from "@/models/process-status.type";
 
-export const labelsByOpportunityStatus: {[key in OpportunityStatus]: string} = {
-    validated: 'Validé',
+export const labelsByProcessStatus: {[key in ProcessStatus]: string} = {
     progress: 'En cours',
+    validated: 'Validé',
     cancelled: 'Annulé',
 }

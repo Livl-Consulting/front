@@ -1,1 +1,0 @@
-export type OpportunityStatus = 'progress' | 'validated' | 'cancelled';

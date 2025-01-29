@@ -3,9 +3,10 @@ import { SearchIcon, XIcon } from "lucide-react";
 import { Product } from "@/models/product";
 import { AutocompleteOption, MultiSelect } from "./ui/multi-select";
 import { searchProducts } from "@/lib/actions/search-product.action";
-import { Separator } from "@radix-ui/react-separator";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Separator } from "./ui/separator";
 
 type Props = {
   name: string;
@@ -81,8 +82,8 @@ export const ProductPicker: FC<Props> = ({ name, initialProducts }) => {
                 />
 
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor={`${name}[${i}][id]`}>Produit</Label>
-                  <input
+                  <Label htmlFor={`${name}[${i}][id]`}>Quantité</Label>
+                  <Input
                     type="number"
                     id={`${name}[${i}][quantity]`}
                     defaultValue={1}
@@ -91,6 +92,16 @@ export const ProductPicker: FC<Props> = ({ name, initialProducts }) => {
                   />
                 </div>
 
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor={`${name}[${i}][id]`}>Prix par unité</Label>
+                  <Input
+                    type="number"
+                    id={`${name}[${i}][unit_price]`}
+                    defaultValue={product?.price}
+                    name={`${name}[${i}][unit_price]`}
+                    min={0}
+                  />
+                </div>
                 <Button
                   variant="ghost"
                   size={"icon"}
@@ -101,7 +112,7 @@ export const ProductPicker: FC<Props> = ({ name, initialProducts }) => {
                   <XIcon size={24} />
                 </Button>
               </div>
-              {i < products.length - 1 && <Separator />}
+              {i < products.length - 1 && <Separator className="my-5" />}
             </div>
           ))}
         </div>

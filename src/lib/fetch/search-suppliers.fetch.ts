@@ -1,8 +1,7 @@
-
+import { Supplier } from "@/models/supplier";
 import { apiUrl } from "../utils";
-import { Product } from "@/models/product";
 
-export const fetchProducts = async (query: string): Promise<{ results: Product[] }> => {
+export const fetchSuppliers = async (query: string): Promise<{ results: Supplier[] }> => {
 
     if (!query) {
         return {
@@ -13,22 +12,20 @@ export const fetchProducts = async (query: string): Promise<{ results: Product[]
     const API_URL = apiUrl();
 
     const params = new URLSearchParams({ query });
-
-    const response = await fetch(`${API_URL}/products/search?${params.toString()}`, {
+    const response = await fetch(`${API_URL}/suppliers/search?${params.toString()}`, {
         next: {
-            tags: ['products', `products:${query}`],
+            tags: ['suppliers', `suppliers:${query}`],
             revalidate: 3600
-        }, 
+        },
         cache: 'no-cache'
     });
 
     if (!response.ok) {
         const data = await response.text();
-        throw new Error(`${response.statusText} ${data} (products:${query})`);
+        throw new Error(`${response.statusText} ${data} (suppliers:${query})`);
     }
 
     return {
         results: await response.json()
-    }
-
+    };
 }
