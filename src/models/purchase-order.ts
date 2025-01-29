@@ -1,6 +1,7 @@
 import { ProductWithPurchaseOrderPivot } from "./product";
 import { PurchaseOrderStatus } from "./purchase-order-status";
 import { Supplier } from "./supplier";
+import { SupplierPayment } from "./supplier-payment";
 
 export type PurchaseOrder = {
     id: number;
@@ -10,5 +11,5 @@ export type PurchaseOrder = {
     supplierId: number;
     supplier: Supplier;
     products: ProductWithPurchaseOrderPivot[];
-    //supplierPayments: SupplierPayment[]
+    supplierPayments: SupplierPayment[]
 }

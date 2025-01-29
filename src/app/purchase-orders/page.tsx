@@ -9,15 +9,14 @@ import {
   Table,
 } from "@/components/ui/table";
 import { apiUrl } from "@/lib/utils";
-import { Edit, File } from "lucide-react";
-import Link from "next/link";
+import { Edit } from "lucide-react";
 import {formatDate} from "@/lib/date-utils";
 import { ProcessStatusBadge } from "@/components/process-status-badge";
 import { PurchaseOrder } from "@/models/purchase-order";
 import { labelsByPurchaseOrderStatus } from "@/models/labels-by-purchase-order-status";
 import { Dialog } from "@radix-ui/react-dialog";
 import { DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Suspense } from "react";
+import Link from "next/link";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/purchase-orders`);
@@ -52,6 +51,7 @@ export default async function Page() {
           <TableHead>Produits</TableHead>
           <TableHead>Mise à jour</TableHead>
           <TableHead>Bon commande</TableHead>
+          <TableHead>Payer</TableHead>
           <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
@@ -76,7 +76,7 @@ export default async function Page() {
             <TableCell>{formatDate(purchaseOrder.updatedAt)}</TableCell>
             <TableCell className="">
               <Dialog>
-                <DialogTrigger>
+                <DialogTrigger asChild>
                   <Button variant="outline">Open</Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-3xl">
@@ -91,6 +91,13 @@ export default async function Page() {
                   </DialogHeader>
                 </DialogContent>
               </Dialog>
+            </TableCell>
+            <TableCell>
+                <Button variant="outline" asChild>
+                  <Link href={`/purchase-orders/${purchaseOrder.id}/payments`}>
+                    Voir les paiements
+                  </Link>
+                </Button>
             </TableCell>
             <TableCell className="text-right">
               <Button variant="ghost" size="icon" asChild>

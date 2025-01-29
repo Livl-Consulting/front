@@ -1,5 +1,6 @@
 import { PriceRequest } from "./price-request";
 import { PurchaseOrder } from "./purchase-order";
+import { SupplierPayment } from "./supplier-payment";
 
 export type Supplier = {
     id: number;
@@ -11,5 +12,5 @@ export type Supplier = {
     email: string;
     purchaseOrders: PurchaseOrder[];
     priceRequests: PriceRequest[];
-    // supplierPayments: SupplierPayment[];
+    supplierPayments: SupplierPayment[];
 }
