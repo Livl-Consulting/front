@@ -3,6 +3,7 @@
 import { FieldErrors } from "@/components/ui/field-errors";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { SubmitButton } from "@/components/ui/submit-button";
 import { Textarea } from "@/components/ui/textarea";
 import { addProduct } from "@/lib/actions/add-product.action";
@@ -40,6 +41,20 @@ export const ProductForm: FC<{
           name="description"
         />
         <FieldErrors errors={state?.errors?.description?._errors} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <Label htmlFor="description">Type de produit</Label>
+        <Select name="type">
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="sale">Vente</SelectItem>
+            <SelectItem value="purchase">Achat</SelectItem>
+            <SelectItem value="both">Vente & Achat</SelectItem>
+          </SelectContent>
+        </Select>
+        <FieldErrors errors={state?.errors?.type?._errors} />
       </div>
       <SubmitButton>Enregistrer</SubmitButton>
       <FieldErrors errors={state.message ? [state.message] : []} />

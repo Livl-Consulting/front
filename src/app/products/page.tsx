@@ -29,6 +29,7 @@ export default async function Page() {
           <TableHead>Créé le</TableHead>
           <TableHead>Mise à jour</TableHead>
           <TableHead className="text-right">Prix</TableHead>
+          <TableHead className="text-right">Type</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -38,6 +39,9 @@ export default async function Page() {
             <TableCell>{formatDate(p.createdAt)}</TableCell>
             <TableCell>{formatDate(p.updatedAt)}</TableCell>
             <TableCell className="text-right">{p.price}</TableCell>
+            <TableCell className="text-right">
+              {p.type === 'sale' ? 'Vente' : p.type === 'purchase' ? 'Achat' : 'Vente & Achat'}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

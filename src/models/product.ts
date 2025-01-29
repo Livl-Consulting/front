@@ -1,3 +1,5 @@
+import { ProductType } from "./product-type";
+
 export type Product = {
     id: number;
     createdAt: Date;
@@ -5,4 +7,5 @@ export type Product = {
     name: string;
     description: string;
     price: number;
+    type: ProductType;
 }
