@@ -6,9 +6,9 @@ import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
 
 const fields = {
-    successProbability: z.number().int().min(0).max(100),
+    successProbability: z.number({'message': "La probabilité de succès doit être un nombre entre 0 et 100%"}).nonnegative().max(100),
     status : z.enum(['progress', 'validated', 'cancelled']),
-    price: z.number().nonnegative(),
+    price: z.number({ message: "Insérez un prix" }).nonnegative(),
     clientId: z.number().nonnegative(),
     productId: z.number().nonnegative(), 
 }
@@ -28,6 +28,7 @@ export const addOpportunity = async (prevState: FormState<typeof fields>, formDa
 
         const response = await fetch(`${apiUrl()}/opportunities`, {
             method: 'POST',
+            body: formData,
         });
 
         if (!response.ok) {
@@ -40,6 +41,6 @@ export const addOpportunity = async (prevState: FormState<typeof fields>, formDa
         return { success: false, message: (error as Error).message };
     }
 
-    redirect('/products');
+    redirect('/opportunities');
 
 }

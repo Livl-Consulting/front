@@ -12,4 +12,6 @@ export type Opportunity = {
     client: Client;
     productId: number;
     product: Product;
+    price: number;
+    //quote: Quote[]
 }

@@ -32,8 +32,9 @@ export default async function Page() {
           <TableHead className="w-[100px]">Status</TableHead>
           <TableHead className="w-[100px]">Client</TableHead>
           <TableHead className="w-[100px]">Produit</TableHead>
+          <TableHead className="w-[100px]">Prix produit</TableHead>
           <TableHead className="w-[100px]">Probabilité de succès</TableHead>
-          <TableHead className="w-[100px]">Prix</TableHead>
+          <TableHead className="w-[100px]">Prix opportunité</TableHead>
           <TableHead>Mise à jour</TableHead>
           <TableHead className="text-right">Actions</TableHead>
         </TableRow>
@@ -48,8 +49,9 @@ export default async function Page() {
               {opportunity.client.firstName} {opportunity.client.lastName}{" "}
             </TableCell>
             <TableCell className="font-medium">{opportunity.product.name}</TableCell>
-            <TableCell>{opportunity.successProbability}%</TableCell>
             <TableCell>{opportunity.product.price}</TableCell>
+            <TableCell>{opportunity.successProbability}%</TableCell>
+            <TableCell>{opportunity.price}</TableCell>
             <TableCell>{formatDate(opportunity.updatedAt)}</TableCell>
             <TableCell className="text-right">
               <Button variant={"ghost"} size={"icon"} asChild>

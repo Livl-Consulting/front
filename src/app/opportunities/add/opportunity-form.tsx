@@ -32,16 +32,16 @@ export const OpportunityForm: FC<{
           </div>
           <div className="flex flex-col gap-2">
               <Label htmlFor="productId">Produit</Label>
-              <ProductPicker name="productId"/>
-              <FieldErrors errors={state?.errors?.clientId?._errors}/>
+              <ProductPicker name="product" productType='sale' allowQuantityEdit={false} allowPriceEdit={true}/>
+              <FieldErrors errors={state?.errors?.productId?._errors}/>
           </div>
           <div className="flex flex-col gap-2">
-              <Label htmlFor="price">Probabilities de succès (%)</Label>
+              <Label htmlFor="price">Probabilité de succès (%)</Label>
               <Input
                   type="number"
-                  id="price"
+                  id="successProbability"
                   defaultValue={opportunity?.successProbability}
-                  name="price"
+                  name="successProbability"
                   min={0}
                   max={100}
               />
@@ -49,7 +49,7 @@ export const OpportunityForm: FC<{
           </div>
           <div className="flex flex-col gap-2">
               <Label htmlFor="description">Status</Label>
-              <Select>
+              <Select name="status">
                   <SelectTrigger>
                       <SelectValue placeholder="Status de l'opportunité"/>
                   </SelectTrigger>
@@ -57,7 +57,7 @@ export const OpportunityForm: FC<{
                       {
                           Object.entries(labelsByProcessStatus).map(([key, value]) => {
                               return (
-                                  <SelectItem key={key} value={value}>{value}</SelectItem>
+                                  <SelectItem key={key} value={key}>{value}</SelectItem>
                               )
                           })
                       }

@@ -32,7 +32,7 @@ export const PriceRequestForm: FC<{
           </div>
           <div className="flex flex-col gap-2">
               <Label htmlFor="productId">Produits</Label>
-              <ProductPicker name="products"/>
+              <ProductPicker name="products" productType='purchase' allowQuantityEdit={true} allowPriceEdit={true} allowMultipleSelection={true} />
               <FieldErrors errors={state?.errors?.products?._errors}/>
           </div>
           <div className="flex flex-col gap-2">

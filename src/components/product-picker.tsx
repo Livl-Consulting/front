@@ -7,34 +7,38 @@ import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
+import { ProductType } from "@/models/product-type";
 
 type Props = {
   name: string;
   initialProducts?: Product[];
+  allowMultipleSelection?: boolean;
+  allowQuantityEdit?: boolean;
+  allowPriceEdit?: boolean;
+  productType: ProductType;
 };
 
-export const ProductPicker: FC<Props> = ({ name, initialProducts }) => {
-  const [autocompleteOptions, setAutocompleteOptions] = useState<
-    AutocompleteOption[]
-  >([]);
-
+export const ProductPicker: FC<Props> = ({
+  name,
+  initialProducts = [],
+  allowMultipleSelection = false,
+  allowQuantityEdit = true,
+  allowPriceEdit = true,
+  productType,
+}) => {
+  const [autocompleteOptions, setAutocompleteOptions] = useState<AutocompleteOption[]>([]);
   const [search, setSearch] = useState<string>("");
-  const [products, setProducts] = useState<Product[]>(initialProducts ?? []);
+  const [products, setProducts] = useState<Product[]>(initialProducts);
 
   const onAddProduct = (v: AutocompleteOption[]) => {
-    if (!v.length) {
-      return;
-    }
-
+    if (!v.length) return;
     const { value, label } = v[0];
 
-    if (value === label) {
-      // can't handle manual input for now
-      return;
-    } else {
-      const p = JSON.parse(value) as Product;
-      setProducts([...products, p]);
-    }
+    if (value === label) return;
+    const p = JSON.parse(value) as Product;
+    if (p.type !== 'both' && p.type !== productType) return;
+
+    setProducts(allowMultipleSelection ? [...products, p] : [p]);
   };
 
   useEffect(() => {
@@ -47,14 +51,19 @@ export const ProductPicker: FC<Props> = ({ name, initialProducts }) => {
 
   const updateAutocomplete = async (search: string) => {
     const results = await searchProducts(search);
-
     setAutocompleteOptions(
-      results.map((product) => ({
-        value: JSON.stringify(product),
-        label: product.name,
-      }))
+      results
+        .filter((product) => product.type === 'both' || product.type === productType)
+        .map((product) => ({
+          value: JSON.stringify(product),
+          label: product.name,
+        }))
     );
   };
+
+  const inputProductName = (i: number) => {
+    return allowMultipleSelection ? `${name}[${i}][id]` : name;
+  }
 
   return (
     <>
@@ -68,47 +77,43 @@ export const ProductPicker: FC<Props> = ({ name, initialProducts }) => {
         leading={<SearchIcon className="w-4 h-4 text-muted-foreground" />}
         addLabel={`Ajouter "${search}"`}
       />
-      {products?.length > 0 && (
+      {products.length > 0 && (
         <div className="flex flex-col gap-2 p-4 border border-border rounded-lg">
           {products.map((product, i) => (
+            
             <div key={`product:${product.id || product.name}`}>
               <div className="flex gap-2">
                 <p className="text-lg truncate w-full">{product.name}</p>
-                <input
-                  type="hidden"
-                  id={`${name}[${i}][id]`}
-                  defaultValue={product?.id}
-                  name={`${name}[${i}][id]`}
+                <Input type="hidden" 
+                  id={allowMultipleSelection ? `${name}[${i}][id]` : "productId"}
+                  defaultValue={product?.id} 
+                  name={allowMultipleSelection ? `${name}[${i}][id]` : "productId"}
                 />
-
+                
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor={`${name}[${i}][id]`}>Quantité</Label>
+                  <Label htmlFor={`${name}[${i}][quantity]`}>Quantité</Label>
                   <Input
                     type="number"
-                    id={`${name}[${i}][quantity]`}
+                    id={allowMultipleSelection ? `${name}[${i}][quantity]` : "quantity"}
                     defaultValue={1}
-                    name={`${name}[${i}][quantity]`}
+                    name={allowMultipleSelection ? `${name}[${i}][quantity]` : "quantity"}
                     min={0}
+                    disabled={!allowQuantityEdit}
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor={`${name}[${i}][id]`}>Prix par unité</Label>
+                  <Label htmlFor={`${name}[${i}][unit_price]`}>Prix par unité</Label>
                   <Input
                     type="number"
-                    id={`${name}[${i}][unit_price]`}
+                    id={allowMultipleSelection ? `${name}[${i}][unit_price]` : "price"}
                     defaultValue={product?.price}
-                    name={`${name}[${i}][unit_price]`}
+                    name={allowMultipleSelection ? `${name}[${i}][unit_price]` : "price"}
                     min={0}
+                    disabled={!allowPriceEdit}
                   />
                 </div>
-                <Button
-                  variant="ghost"
-                  size={"icon"}
-                  onClick={() => {
-                    setProducts(products.filter((a) => a !== product));
-                  }}
-                >
+                <Button variant="ghost" size="icon" onClick={() => setProducts(products.filter((a) => a !== product))}>
                   <XIcon size={24} />
                 </Button>
               </div>
