@@ -50,7 +50,17 @@ export const CommandBoard = () => {
             Mes clients
           </CommandItem>
         </CommandGroup>
-        <CommandGroup heading="Opportunités">
+        <CommandGroup heading="Fournisseurs">
+          <CommandItem onSelect={() => push("/suppliers/add")}>
+            <UserPlus />
+            Nouveau fournisseur
+          </CommandItem>
+          <CommandItem onSelect={() => push("/suppliers")}>
+            <Users />
+            Mes fournisseurs
+          </CommandItem>
+        </CommandGroup>
+        <CommandGroup heading="Opportunités de vente">
           <CommandItem onSelect={() => push("/opportunities/add")}>
             <Plus />
             Nouvelle opportunité
@@ -60,7 +70,7 @@ export const CommandBoard = () => {
             Consulter mes opportunités
           </CommandItem>
         </CommandGroup>
-        <CommandGroup heading="Devis">
+        <CommandGroup heading="Devis de vente">
           <CommandItem>
             <FilePlus2 />
             Créer un devis
@@ -70,7 +80,7 @@ export const CommandBoard = () => {
             Consulter mes devis
           </CommandItem>
         </CommandGroup>
-        <CommandGroup heading="Commandes">
+        <CommandGroup heading="Commandes de vente">
           <CommandItem>
             <CirclePlus />
             Créer une commande
@@ -80,7 +90,7 @@ export const CommandBoard = () => {
             Consulter mes commandes
           </CommandItem>
         </CommandGroup>
-        <CommandGroup heading="Règlement">
+        <CommandGroup heading="Règlement de vente">
           <CommandItem>
             <FilePlus2 />
             Créer un règlement
