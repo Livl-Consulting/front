@@ -19,38 +19,55 @@ export default async function Page({ params }: { params: Promise<{ slug: number 
 
   const payments = await response.json() as SupplierPayment[];
 
+  const totalAmount = orderPurchase.products.reduce((acc, product) => acc + product.meta.pivot_quantity * product.meta.pivot_unit_price, 0);
+  const totalPaid = payments.reduce((acc, payment) => acc + payment.amount, 0);
+  const totalDue = totalAmount - totalPaid;
+
   return (
     <div className="flex flex-col gap-8 ">
       <HeaderTitle goBackUrlLink={`/purchase-orders`} title={`Paiment commande n°${orderPurchase.id}`} />
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Montant</TableHead>
             <TableHead>Méthode</TableHead>
             <TableHead>Notes</TableHead>
+            <TableHead className="text-right">Montant</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {payments.map((payment) => (
             <TableRow key={payment.id}>
-              <TableCell>{payment.amount} €</TableCell>
               <TableCell>{labelsPaymentMethod[payment.paymentMethod]}</TableCell>
               <TableCell>{payment.notes || "—"}</TableCell>
+              <TableCell className="text-right">{payment.amount} €</TableCell>
             </TableRow>
           ))}
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={3}>Total payé:</TableCell>
-            <TableCell className="text-right">{payments.reduce((acc, payment) => acc + payment.amount, 0)} €</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={3}>Reste à payer:</TableCell>
-            <TableCell className="text-right"><strong>{orderPurchase.products.reduce((acc, product) => acc + product.meta.pivot_quantity * product.meta.pivot_unit_price, 0) - payments.reduce((acc, payment) => acc + payment.amount, 0)} €</strong></TableCell>
+            <TableCell colSpan={2}>Total payé:</TableCell>
+            <TableCell className="text-right">{totalPaid} €</TableCell>
           </TableRow>
         </TableFooter>
       </Table>
-      <SupplierPaymentsForm purchaseOrderId={orderPurchase.id} />
+      {
+        totalDue === 0 && (
+          <div className="bg-green-100 text-green-800 p-4 rounded-lg">
+            <p>La commande est entièrement payée</p>
+          </div>
+        )
+      } 
+      {
+        totalDue > 0 && (
+          <div className="flex flex-col gap-6">
+            <div className="bg-red-100 text-red-800 p-4 rounded-lg">
+              <p>Il reste {totalDue}€ à payer, donc hop on se bouge !</p>
+            </div>
+            <h2 className="text-lg font-semibold">Ajouter un paiement</h2>
+            <SupplierPaymentsForm purchaseOrderId={orderPurchase.id} totalDue={totalDue} />
+          </div>
+        )
+      }
     </div>
   );
 }

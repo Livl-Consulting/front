@@ -21,9 +21,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export const SupplierPaymentsForm: FC<{
-  supplierPayment?: SupplierPayment;
+  totalDue: number;
   purchaseOrderId: number;
-}> = ({ supplierPayment, purchaseOrderId }) => {
+}> = ({ totalDue, purchaseOrderId }) => {
   const [state, action] = useActionState(addSupplierPayment, { success: false });
 
   return (
@@ -31,7 +31,7 @@ export const SupplierPaymentsForm: FC<{
           <Input type="hidden" name="purchaseOrderId" value={purchaseOrderId}/>
           <div className="flex flex-col gap-2">
                 <Label htmlFor="description">Montant</Label>
-                <Input type="number" name="amount" id="amount" className="input"/>
+                <Input type="number" name="amount" id="amount" className="input" max={totalDue} min={1}/>
                 <FieldErrors errors={state?.errors?.amount?._errors}/>
           </div>
           <div className="flex flex-col gap-2">
