@@ -41,5 +41,5 @@ export const addSupplierPayment= async (prevState: FormState<typeof fields>, for
         return { success: false, message: (error as Error).message };
     }
 
-    redirect('/supplier-payments');
+    redirect(`/purchase-orders/${validated.data.purchaseOrderId}/payments`);
 }

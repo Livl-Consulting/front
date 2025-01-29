@@ -22,7 +22,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 export const SupplierPaymentsForm: FC<{
   supplierPayment?: SupplierPayment;
-  purchaseOrderId: string;
+  purchaseOrderId: number;
 }> = ({ supplierPayment, purchaseOrderId }) => {
   const [state, action] = useActionState(addSupplierPayment, { success: false });
 

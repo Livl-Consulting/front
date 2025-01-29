@@ -28,14 +28,6 @@ export default async function Page() {
     ...priceRequest,
     products: priceRequest.products.map((product: any) => ({
       ...product,
-      meta: {
-        pivotPriceRequestId: product.meta.pivot_price_request_id,
-        pivotProductId: product.meta.pivot_product_id,
-        pivotQuantity: product.meta.pivot_quantity,
-        pivotUnitPrice: product.meta.pivot_unit_price,
-        pivotCreatedAt: product.meta.pivot_created_at,
-        pivotUpdatedAt: product.meta.pivot_updated_at,
-      },
     })),
   })) as PriceRequest[];
  
@@ -64,7 +56,7 @@ export default async function Page() {
               <ul className="list-disc pl-4">
                 {priceRequest.products.map((product) => (
                   <li key={product.id}>
-                    {product.name} - {product.meta.pivotQuantity}x à {product.meta.pivotUnitPrice}€
+                    {product.name} - {product.meta.pivot_quantity}x à {product.meta.pivot_unit_price}€
                   </li>
                 ))}
               </ul>

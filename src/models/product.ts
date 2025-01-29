@@ -12,22 +12,22 @@ export type Product = {
 
 export interface ProductWithPriceRequestPivot extends Product {
     meta: {
-        pivotPriceRequestId: number;
-        pivotProductId: number;
-        pivotQuantity: number;
-        pivotUnitPrice: number;
-        pivotCreatedAt: string;
-        pivotUpdatedAt: string;
+        pivot_price_request_id: number;
+        pivot_product_id: number;
+        pivot_quantity: number;
+        pivot_unit_price: number;
+        pivot_created_at: string;
+        pivot_updated_at: string;
     };
 }  
 
 export interface ProductWithPurchaseOrderPivot extends Product {
     meta: {
-        pivotPurchaseOrderId: number;
-        pivotProductId: number;
-        pivotQuantity: number;
-        pivotUnitPrice: number;
-        pivotCreatedAt: string;
-        pivotUpdatedAt: string;
+        pivot_purchaseOrder_id: number;
+        pivot_product_id: number;
+        pivot_quantity: number;
+        pivot_unit_price: number;
+        pivot_created_at: string;
+        pivot_updated_at: string;
     };
 }  
