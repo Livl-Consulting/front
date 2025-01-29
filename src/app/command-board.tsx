@@ -20,6 +20,8 @@ import {
   ShoppingCart,
   File,
   CircleHelp,
+  Package,
+  PackagePlus,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -111,6 +113,16 @@ export const CommandBoard = () => {
           <CommandItem onSelect={() => push("/price-requests")}>
             <CircleHelp />
             Consulter mes demandes de prix
+          </CommandItem>
+        </CommandGroup>
+        <CommandGroup heading="Saisie de commandes - Achats">
+          <CommandItem onSelect={() => push("/purchase-orders/add")}>
+            <PackagePlus />
+            Saisir une commande
+          </CommandItem>
+          <CommandItem onSelect={() => push("/purchase-orders")}>
+            <Package />
+            Consulter mes commandes
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />

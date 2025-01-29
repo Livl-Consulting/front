@@ -12,24 +12,24 @@ import { apiUrl } from "@/lib/utils";
 import { Edit } from "lucide-react";
 import Link from "next/link";
 import {formatDate} from "@/lib/date-utils";
-import { PriceRequest } from "@/models/price-request";
 import { ProcessStatusBadge } from "@/components/process-status-badge";
-import { labelsByProcessStatus } from "@/models/labels-by-opportunity-status";
+import { PurchaseOrder } from "@/models/purchase-order";
+import { labelsByPurchaseOrderStatus } from "@/models/labels-by-purchase-order-status";
 
 export default async function Page() {
-  const response = await fetch(`${apiUrl()}/price-requests`);
+  const response = await fetch(`${apiUrl()}/purchase-orders`);
 
   if (!response.ok) {
     throw new Error(response.statusText);
   }
 
   const responseJson = await response.json() as any[];
-  const priceRequests = responseJson.map((priceRequest: any) => ({
-    ...priceRequest,
-    products: priceRequest.products.map((product: any) => ({
+  const purchaseOrders = responseJson.map((purchaseOrder: any) => ({
+    ...purchaseOrder,
+    products: purchaseOrder.products.map((product: any) => ({
       ...product,
       meta: {
-        pivotPriceRequestId: product.meta.pivot_price_request_id,
+        pivotPurchaseOrderId: product.meta.pivot_purchase_order_id,
         pivotProductId: product.meta.pivot_product_id,
         pivotQuantity: product.meta.pivot_quantity,
         pivotUnitPrice: product.meta.pivot_unit_price,
@@ -37,11 +37,13 @@ export default async function Page() {
         pivotUpdatedAt: product.meta.pivot_updated_at,
       },
     })),
-  })) as PriceRequest[];
+  })) as PurchaseOrder[];
+
+  console.log(purchaseOrders);
  
   return (
     <Table>
-      <TableCaption>Vos saisies de demandes de prix</TableCaption>
+      <TableCaption>Vos saisies de commandes - Flux achats</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Status</TableHead>
@@ -52,24 +54,24 @@ export default async function Page() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {priceRequests.map((priceRequest) => (
-          <TableRow key={priceRequest.id}>
+        {purchaseOrders.map((purchaseOrder) => (
+          <TableRow key={purchaseOrder.id}>
             <TableCell>
-              <ProcessStatusBadge status={priceRequest.status} props={labelsByProcessStatus[priceRequest.status]} />
+              <ProcessStatusBadge status={purchaseOrder.status} props={labelsByPurchaseOrderStatus[purchaseOrder.status]} />
             </TableCell>
             <TableCell className="font-medium">
-              {priceRequest.supplier.firstName} {priceRequest.supplier.lastName}
+              {purchaseOrder.supplier.firstName} {purchaseOrder.supplier.lastName}
             </TableCell>
             <TableCell>
               <ul className="list-disc pl-4">
-                {priceRequest.products.map((product) => (
+                {purchaseOrder.products.map((product) => (
                   <li key={product.id}>
                     {product.name} - {product.meta.pivotQuantity}x à {product.meta.pivotUnitPrice}€
                   </li>
                 ))}
               </ul>
             </TableCell>
-            <TableCell>{formatDate(priceRequest.updatedAt)}</TableCell>
+            <TableCell>{formatDate(purchaseOrder.updatedAt)}</TableCell>
             <TableCell className="text-right">
               <Button variant="ghost" size="icon" asChild>
                 <Link href={`#`}>

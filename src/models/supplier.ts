@@ -1,3 +1,6 @@
+import { PriceRequest } from "./price-request";
+import { PurchaseOrder } from "./purchase-order";
+
 export type Supplier = {
     id: number;
     createdAt: Date;
@@ -6,7 +9,7 @@ export type Supplier = {
     firstName: string;
     companyName?: string;
     email: string;
-    // purchaseOrders: PurchaseOrder[];
-    // priceRequests: PriceRequest[];
+    purchaseOrders: PurchaseOrder[];
+    priceRequests: PriceRequest[];
     // supplierPayments: SupplierPayment[];
 }

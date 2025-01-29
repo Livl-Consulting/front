@@ -14,6 +14,7 @@ import { Edit } from "lucide-react";
 import Link from "next/link";
 import {formatDate} from "@/lib/date-utils";
 import {ProcessStatusBadge} from "@/components/process-status-badge";
+import { labelsByProcessStatus } from "@/models/labels-by-opportunity-status";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/opportunities`);
@@ -43,7 +44,7 @@ export default async function Page() {
         {opportunities.map((opportunity) => (
           <TableRow key={opportunity.id}>
             <TableCell>
-              <ProcessStatusBadge status={opportunity.status} />
+              <ProcessStatusBadge status={opportunity.status} props={labelsByProcessStatus[opportunity.status]} />
             </TableCell>
             <TableCell className="font-medium">
               {opportunity.client.firstName} {opportunity.client.lastName}{" "}

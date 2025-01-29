@@ -20,3 +20,14 @@ export interface ProductWithPriceRequestPivot extends Product {
         pivotUpdatedAt: string;
     };
 }  
+
+export interface ProductWithPurchaseOrderPivot extends Product {
+    meta: {
+        pivotPurchaseOrderId: number;
+        pivotProductId: number;
+        pivotQuantity: number;
+        pivotUnitPrice: number;
+        pivotCreatedAt: string;
+        pivotUpdatedAt: string;
+    };
+}  
