@@ -9,12 +9,15 @@ import {
   Table,
 } from "@/components/ui/table";
 import { apiUrl } from "@/lib/utils";
-import { Edit } from "lucide-react";
+import { Edit, File } from "lucide-react";
 import Link from "next/link";
 import {formatDate} from "@/lib/date-utils";
 import { ProcessStatusBadge } from "@/components/process-status-badge";
 import { PurchaseOrder } from "@/models/purchase-order";
 import { labelsByPurchaseOrderStatus } from "@/models/labels-by-purchase-order-status";
+import { Dialog } from "@radix-ui/react-dialog";
+import { DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Suspense } from "react";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/purchase-orders`);
@@ -38,18 +41,17 @@ export default async function Page() {
       },
     })),
   })) as PurchaseOrder[];
-
-  console.log(purchaseOrders);
  
   return (
     <Table>
-      <TableCaption>Vos saisies de commandes - Flux achats</TableCaption>
+      <TableCaption>Vos commandes - Flux achats</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Status</TableHead>
           <TableHead>Fournisseur</TableHead>
           <TableHead>Produits</TableHead>
           <TableHead>Mise à jour</TableHead>
+          <TableHead>Bon commande</TableHead>
           <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
@@ -72,6 +74,24 @@ export default async function Page() {
               </ul>
             </TableCell>
             <TableCell>{formatDate(purchaseOrder.updatedAt)}</TableCell>
+            <TableCell className="">
+              <Dialog>
+                <DialogTrigger>
+                  <Button variant="outline">Open</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-3xl">
+                  <DialogHeader>
+                    <DialogTitle className="mb-5">Visionnage du bon de commande</DialogTitle>
+                    <DialogDescription>
+                      <iframe 
+                          src={`${apiUrl()}/purchase-orders/generate-pdf/${purchaseOrder.id}`} 
+                          className="w-full h-[80vh]"
+                        />
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            </TableCell>
             <TableCell className="text-right">
               <Button variant="ghost" size="icon" asChild>
                 <Link href={`#`}>
