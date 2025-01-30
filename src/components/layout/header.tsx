@@ -1,7 +1,6 @@
 'use client';
 
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -43,7 +42,7 @@ export default function Header() {
               href="/"
               className="rounded-lg bg-transparent px-2 py-1 shadow-none hover:bg-slate-400/10"
             >
-                <Image src="https://user-images.githubusercontent.com/62793491/208452652-71416c5c-8261-4501-a002-afc9e2cf0a0b.png" alt="logo" className="h-8" />
+                <img src="https://user-images.githubusercontent.com/62793491/208452652-71416c5c-8261-4501-a002-afc9e2cf0a0b.png" alt="logo" className="h-8"/>
             </Link>
             <NavLinks />
           </div>
