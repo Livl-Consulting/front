@@ -24,6 +24,9 @@ const badgeVariants = cva(
         received: "border-transparent bg-orange-400 text-primary-foreground",
         delivered: "border-transparent bg-green-400 text-primary-foreground",
         invoiced: "border-transparent bg-purple-400 text-primary-foreground",
+        sale: "border-transparent bg-pink-400 text-primary-foreground",
+        purchase: "border-transparent bg-yellow-400 text-primary-foreground",
+        both: "border-transparent bg-indigo-400 text-primary-foreground",
       },
     },
     defaultVariants: {

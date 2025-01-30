@@ -28,20 +28,20 @@ export default async function Page() {
         <TableCaption>Vos clients</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Prénom</TableHead>
-            <TableHead className="w-[100px]">Nom</TableHead>
-            <TableHead className="w-[100px]">Entreprise</TableHead>
-            <TableHead className="w-[100px]">Email</TableHead>
+            <TableHead>Prénom</TableHead>
+            <TableHead>Nom</TableHead>
+            <TableHead>Entreprise</TableHead>
+            <TableHead>Email</TableHead>
             <TableHead>Mise à jour</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {clients.map((client) => (
             <TableRow key={client.id}>
-              <TableCell className="font-medium">{client.firstName}</TableCell>
-              <TableCell className="font-medium">{client.lastName}</TableCell>
-              <TableCell className="font-medium">{client.companyName}</TableCell>
-              <TableCell className="font-medium">{client.email}</TableCell>
+              <TableCell>{client.firstName}</TableCell>
+              <TableCell>{client.lastName}</TableCell>
+              <TableCell>{client.companyName}</TableCell>
+              <TableCell>{client.email}</TableCell>
               <TableCell>{formatDate(client.updatedAt)}</TableCell>
             </TableRow>
           ))}

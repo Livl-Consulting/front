@@ -17,6 +17,7 @@ import { ProcessStatusBadge } from "@/components/process-status-badge";
 import { labelsByProcessStatus } from "@/models/labels-by-opportunity-status";
 import { HeaderTitle } from "@/components/header-title";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import PriceRequestAction from "./price-request-action";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/price-requests`);
@@ -86,11 +87,7 @@ export default async function Page() {
               </TableCell>
               <TableCell>{formatDate(priceRequest.updatedAt)}</TableCell>
               <TableCell className="text-right">
-                <Button variant="ghost" size="icon" asChild>
-                  <Link href={`#`}>
-                    <Edit size={16} />
-                  </Link>
-                </Button>
+                <PriceRequestAction priceRequest={priceRequest} />
               </TableCell>
             </TableRow>
           ))}

@@ -11,6 +11,8 @@ import { apiUrl } from "@/lib/utils";
 import { Product } from "@/models/product";
 import {formatDate} from "@/lib/date-utils";
 import { HeaderTitle } from "@/components/header-title";
+import { ProcessStatusBadge } from "@/components/process-status-badge";
+import { labelsByProductsType } from "@/models/labels-by-products-type";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/products`);
@@ -28,23 +30,23 @@ export default async function Page() {
         <TableCaption>Vos produits</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Nom</TableHead>
-            <TableHead>Créé le</TableHead>
-            <TableHead>Mise à jour</TableHead>
-            <TableHead className="text-right">Prix</TableHead>
-            <TableHead className="text-right">Type</TableHead>
+            <TableHead className="text-center">Type</TableHead>
+            <TableHead>Nom</TableHead>
+            <TableHead>Description</TableHead>
+            <TableHead className="text-center">Prix</TableHead>
+            <TableHead>Mis à jour le</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {products.map((p) => (
             <TableRow key={p.id}>
-              <TableCell className="font-medium">{p.name}</TableCell>
-              <TableCell>{formatDate(p.createdAt)}</TableCell>
-              <TableCell>{formatDate(p.updatedAt)}</TableCell>
-              <TableCell className="text-right">{p.price}</TableCell>
-              <TableCell className="text-right">
-                {p.type === 'sale' ? 'Vente' : p.type === 'purchase' ? 'Achat' : 'Vente & Achat'}
+              <TableCell className="text-center">
+                <ProcessStatusBadge status={p.type} props={labelsByProductsType[p.type]} />
               </TableCell>
+              <TableCell>{p.name}</TableCell>
+              <TableCell>{p.description}</TableCell>
+              <TableCell className="text-center">{p.price}€</TableCell>
+              <TableCell>{formatDate(p.updatedAt)}</TableCell>
             </TableRow>
           ))}
         </TableBody>
