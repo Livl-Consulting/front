@@ -38,8 +38,8 @@ import { labelsBySaleOrderStatus } from "@/models/labels-by-sale-order-status";
               <TableHead className="text-center">Status</TableHead>
               <TableHead>Client</TableHead>
               <TableHead>Produit</TableHead>
-              <TableHead>Prix</TableHead>
-              <TableHead>Confirmation de commande</TableHead>
+              <TableHead className="text-center">Prix</TableHead>
+              <TableHead className="text-center">Confirmation de commande</TableHead>
               <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -55,8 +55,8 @@ import { labelsBySaleOrderStatus } from "@/models/labels-by-sale-order-status";
                   {saleOrder.client.firstName} {saleOrder.client.lastName}{" "}
                 </TableCell>
                 <TableCell className="font-medium">{saleOrder.product.name}</TableCell>
-                <TableCell>{saleOrder.price}€</TableCell>
-                <TableCell>
+                <TableCell className="text-center">{saleOrder.price}€</TableCell>
+                <TableCell className="text-center">
                     <Dialog>
                         <DialogTrigger asChild>
                             <Button variant="outline"><FileText /></Button>
