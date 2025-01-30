@@ -41,7 +41,7 @@ export default async function Page() {
         <TableCaption>Vos commandes - Flux achats</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Status</TableHead>
+            <TableHead className="text-center">Status</TableHead>
             <TableHead>Fournisseur</TableHead>
             <TableHead>Produits commandés</TableHead>
             <TableHead>Date achat</TableHead>
@@ -53,7 +53,7 @@ export default async function Page() {
         <TableBody>
           {purchaseOrders.map((purchaseOrder) => (
             <TableRow key={purchaseOrder.id}>
-              <TableCell>
+              <TableCell className="text-center">
                 <ProcessStatusBadge status={purchaseOrder.status} props={labelsByPurchaseOrderStatus[purchaseOrder.status]} />
               </TableCell>
               <TableCell className="font-medium">

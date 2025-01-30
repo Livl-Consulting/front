@@ -40,7 +40,7 @@ export default async function Page() {
         <TableCaption>Vos saisies de demandes de prix</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Status</TableHead>
+            <TableHead className="text-center">Status</TableHead>
             <TableHead>Fournisseur</TableHead>
             <TableHead>Produits demandés</TableHead>
             <TableHead>Mise à jour</TableHead>
@@ -50,7 +50,7 @@ export default async function Page() {
         <TableBody>
           {priceRequests.map((priceRequest) => (
             <TableRow key={priceRequest.id}>
-              <TableCell>
+              <TableCell className="text-center">
                 <ProcessStatusBadge status={priceRequest.status} props={labelsByProcessStatus[priceRequest.status]} />
               </TableCell>
               <TableCell className="font-medium">

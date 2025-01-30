@@ -46,7 +46,7 @@ export default async function Page() {
           {opportunities.map((opportunity) => (
             <TableRow key={opportunity.id}>
               <TableCell>{opportunity.id}</TableCell>
-              <TableCell>
+              <TableCell className="text-center">
                 <ProcessStatusBadge status={opportunity.status} props={labelsByProcessStatus[opportunity.status]} />
               </TableCell>
               <TableCell className="font-medium">
