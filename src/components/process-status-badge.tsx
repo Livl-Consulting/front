@@ -8,6 +8,6 @@ type Props = {
 
 export const ProcessStatusBadge: FC<Props> = ({ status, props }) => {
     return <>
-        <Badge variant={status}>{props}</Badge>
+        <Badge className="justify-center" variant={status}>{props}</Badge>
     </>
 }

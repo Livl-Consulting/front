@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   TableCaption,
   TableHeader,
@@ -10,12 +9,11 @@ import {
 } from "@/components/ui/table";
 import { apiUrl } from "@/lib/utils";
 import { Opportunity } from "@/models/opportunity";
-import { Edit } from "lucide-react";
-import Link from "next/link";
 import {formatDate} from "@/lib/date-utils";
 import {ProcessStatusBadge} from "@/components/process-status-badge";
 import { labelsByProcessStatus } from "@/models/labels-by-opportunity-status";
 import { HeaderTitle } from "@/components/header-title";
+import OpportunityAction from "./opportunity-actions";
 
 export default async function Page() {
   const response = await fetch(`${apiUrl()}/opportunities`);
@@ -33,19 +31,21 @@ export default async function Page() {
         <TableCaption>Vos opportunités</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Status</TableHead>
-            <TableHead className="w-[100px]">Client</TableHead>
-            <TableHead className="w-[100px]">Produit</TableHead>
-            <TableHead className="w-[100px]">Prix produit</TableHead>
-            <TableHead className="w-[100px]">Probabilité de succès</TableHead>
-            <TableHead className="w-[100px]">Prix opportunité</TableHead>
+            <TableHead>N°</TableHead>
+            <TableHead className="text-center">Status</TableHead>
+            <TableHead>Client</TableHead>
+            <TableHead>Produit</TableHead>
+            <TableHead>Prix produit</TableHead>
+            <TableHead>% de succès</TableHead>
+            <TableHead>Prix opportunité</TableHead>
             <TableHead>Mise à jour</TableHead>
-            <TableHead className="text-right">Actions</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {opportunities.map((opportunity) => (
             <TableRow key={opportunity.id}>
+              <TableCell>{opportunity.id}</TableCell>
               <TableCell>
                 <ProcessStatusBadge status={opportunity.status} props={labelsByProcessStatus[opportunity.status]} />
               </TableCell>
@@ -53,16 +53,12 @@ export default async function Page() {
                 {opportunity.client.firstName} {opportunity.client.lastName}{" "}
               </TableCell>
               <TableCell className="font-medium">{opportunity.product.name}</TableCell>
-              <TableCell>{opportunity.product.price}</TableCell>
+              <TableCell>{opportunity.product.price}€</TableCell>
               <TableCell>{opportunity.successProbability}%</TableCell>
-              <TableCell>{opportunity.price}</TableCell>
+              <TableCell>{opportunity.price}€</TableCell>
               <TableCell>{formatDate(opportunity.updatedAt)}</TableCell>
               <TableCell className="text-right">
-                <Button variant={"ghost"} size={"icon"} asChild>
-                  <Link href={"#"}>
-                    <Edit size={16} />
-                  </Link>
-                </Button>
+                <OpportunityAction opportunity={opportunity} />
               </TableCell>
             </TableRow>
           ))}

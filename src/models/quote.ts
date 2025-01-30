@@ -1,9 +1,9 @@
-import { Client } from "@/models/client";
+import { Client } from "./client";
+import { Opportunity } from "./opportunity";
+import { ProcessStatus } from "./process-status.type";
 import { Product } from "./product";
-import {ProcessStatus} from "@/models/process-status.type";
-import { Quote } from "./quote";
 
-export type Opportunity = {
+export type Quote = {
     id: number;
     createdAt: Date;
     updatedAt: Date;
@@ -14,5 +14,7 @@ export type Opportunity = {
     productId: number;
     product: Product;
     price: number;
-    quote: Quote[]
+    opportunityId: number;
+    opportunity: Opportunity;
+    // order: Order;
 }

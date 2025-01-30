@@ -42,6 +42,7 @@ export const OpportunityForm: FC<{
                   id="successProbability"
                   defaultValue={opportunity?.successProbability}
                   name="successProbability"
+                  placeholder="Ajourter la probabilité de succès de l'opportunité"
                   min={0}
                   max={100}
               />
