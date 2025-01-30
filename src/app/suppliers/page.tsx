@@ -13,7 +13,7 @@ import { Supplier } from "@/models/supplier";
 import { HeaderTitle } from "@/components/header-title";
 
 export default async function Page() {
-  const response = await fetch(`${apiUrl()}/suppliers`);
+  const response = await fetch(`${apiUrl()}/suppliers`, { cache: "no-cache" });
 
   if (!response.ok) {
     throw new Error(response.statusText);

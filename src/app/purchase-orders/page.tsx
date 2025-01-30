@@ -18,9 +18,10 @@ import { Dialog } from "@radix-ui/react-dialog";
 import { DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Link from "next/link";
 import { HeaderTitle } from "@/components/header-title";
+import PurchaseOrderAction from "./purchase-order-action";
 
 export default async function Page() {
-  const response = await fetch(`${apiUrl()}/purchase-orders`);
+  const response = await fetch(`${apiUrl()}/purchase-orders`, { cache: "no-cache" });
 
   if (!response.ok) {
     throw new Error(response.statusText);
@@ -41,25 +42,27 @@ export default async function Page() {
         <TableCaption>Vos commandes - Flux achats</TableCaption>
         <TableHeader>
           <TableRow>
+            <TableHead className="text-center">N°</TableHead>
             <TableHead className="text-center">Status</TableHead>
             <TableHead>Fournisseur</TableHead>
-            <TableHead>Produits commandés</TableHead>
             <TableHead>Date achat</TableHead>
-            <TableHead>Bon commande</TableHead>
-            <TableHead>Paiements</TableHead>
-            <TableHead className="text-right">Actions</TableHead>
+            <TableHead className="text-center">Produits commandés</TableHead>
+            <TableHead className="text-center">Bon commande</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {purchaseOrders.map((purchaseOrder) => (
             <TableRow key={purchaseOrder.id}>
+              <TableCell className="text-center">{purchaseOrder.id}</TableCell>
               <TableCell className="text-center">
                 <ProcessStatusBadge status={purchaseOrder.status} props={labelsByPurchaseOrderStatus[purchaseOrder.status]} />
               </TableCell>
               <TableCell className="font-medium">
                 {purchaseOrder.supplier.firstName} {purchaseOrder.supplier.lastName}
               </TableCell>
-              <TableCell>
+              <TableCell>{formatDate(purchaseOrder.createdAt)}</TableCell>
+              <TableCell className="text-center">
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="outline">
@@ -87,8 +90,7 @@ export default async function Page() {
                   </DialogContent>
                 </Dialog>
               </TableCell>
-              <TableCell>{formatDate(purchaseOrder.createdAt)}</TableCell>
-              <TableCell>
+              <TableCell className="text-center">
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="outline"><FileText /></Button>
@@ -108,18 +110,7 @@ export default async function Page() {
                 </Dialog>
               </TableCell>
               <TableCell>
-                  <Button variant="outline" asChild>
-                    <Link href={`/purchase-orders/${purchaseOrder.id}/payments`}>
-                      <HandCoins />
-                    </Link>
-                  </Button>
-              </TableCell>
-              <TableCell>
-                <Button variant="ghost" size="icon" asChild>
-                  <Link href={`#`}>
-                    <Edit size={16} />
-                  </Link>
-                </Button>
+                <PurchaseOrderAction purchaseOrder={purchaseOrder} />
               </TableCell>
             </TableRow>
           ))}

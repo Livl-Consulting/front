@@ -18,7 +18,7 @@ import { FileText } from "lucide-react";
 import { labelsBySaleOrderStatus } from "@/models/labels-by-sale-order-status";
   
   export default async function Page() {
-    const response = await fetch(`${apiUrl()}/orders`);
+    const response = await fetch(`${apiUrl()}/orders`, { cache: "no-cache" });
   
     if (!response.ok) {
       throw new Error(response.statusText);

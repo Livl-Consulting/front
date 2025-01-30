@@ -16,7 +16,7 @@ import { HeaderTitle } from "@/components/header-title";
 import OpportunityAction from "./opportunity-actions";
 
 export default async function Page() {
-  const response = await fetch(`${apiUrl()}/opportunities`);
+  const response = await fetch(`${apiUrl()}/opportunities`, { cache: "no-cache" });
 
   if (!response.ok) {
     throw new Error(response.statusText);

@@ -15,7 +15,7 @@ import QuoteAction from "./quote-actions";
 import { labelsByProcessStatus } from "@/models/labels-by-opportunity-status";
   
   export default async function Page() {
-    const response = await fetch(`${apiUrl()}/quotes`);
+    const response = await fetch(`${apiUrl()}/quotes`, { cache: "no-cache" });
   
     if (!response.ok) {
       throw new Error(response.statusText);

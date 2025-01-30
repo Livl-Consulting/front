@@ -19,7 +19,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import PriceRequestAction from "./price-request-action";
 
 export default async function Page() {
-  const response = await fetch(`${apiUrl()}/price-requests`);
+  const response = await fetch(`${apiUrl()}/price-requests`, { cache: "no-cache" });
 
   if (!response.ok) {
     throw new Error(response.statusText);
@@ -40,6 +40,7 @@ export default async function Page() {
         <TableCaption>Vos saisies de demandes de prix</TableCaption>
         <TableHeader>
           <TableRow>
+            <TableHead className="text-center">N°</TableHead>
             <TableHead className="text-center">Status</TableHead>
             <TableHead>Fournisseur</TableHead>
             <TableHead>Produits demandés</TableHead>
@@ -50,6 +51,7 @@ export default async function Page() {
         <TableBody>
           {priceRequests.map((priceRequest) => (
             <TableRow key={priceRequest.id}>
+              <TableCell className="text-center">{priceRequest.id}</TableCell>
               <TableCell className="text-center">
                 <ProcessStatusBadge status={priceRequest.status} props={labelsByProcessStatus[priceRequest.status]} />
               </TableCell>

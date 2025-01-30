@@ -15,7 +15,7 @@ import { ProcessStatusBadge } from "@/components/process-status-badge";
 import { labelsByProductsType } from "@/models/labels-by-products-type";
 
 export default async function Page() {
-  const response = await fetch(`${apiUrl()}/products`);
+  const response = await fetch(`${apiUrl()}/products`, { cache: "no-cache" });
 
   if (!response.ok) {
     throw new Error(response.statusText);

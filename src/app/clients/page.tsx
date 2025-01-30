@@ -13,7 +13,7 @@ import {formatDate} from "@/lib/date-utils";
 import { HeaderTitle } from "@/components/header-title";
 
 export default async function Page() {
-  const response = await fetch(`${apiUrl()}/clients`);
+  const response = await fetch(`${apiUrl()}/clients`, { cache: "no-cache" });
 
   if (!response.ok) {
     throw new Error(response.statusText);
