@@ -12,7 +12,6 @@ import { apiUrl } from "@/lib/utils";
 import {ProcessStatusBadge} from "@/components/process-status-badge";
 import { HeaderTitle } from "@/components/header-title";
 import { SaleOrder } from "@/models/sale-order";
-import { labelsByPurchaseOrderStatus } from "@/models/labels-by-purchase-order-status";
 import { Button } from "@/components/ui/button";
 import SaleOrderAction from "./sale-order-action";
 import { FileText } from "lucide-react";

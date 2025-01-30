@@ -1,6 +1,5 @@
 "use client"
 
-import { Opportunity } from "@/models/opportunity";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,8 +10,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button";
 import { EllipsisVertical } from "lucide-react";
-import { createQuoteFromOpportunity } from "@/lib/fetch/create-quote-from-opportunity.fetch";
-import { cancelOpportunity } from "@/lib/fetch/cancel-opportunity.fetch";
 import { Quote } from "@/models/quote";
 import { createOrderFromQuote } from "@/lib/fetch/create-order-from-quote.fetch";
 import { cancelQuote } from "@/lib/fetch/cancel-quote.fetch";

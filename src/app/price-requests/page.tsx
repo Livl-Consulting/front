@@ -9,8 +9,7 @@ import {
   Table,
 } from "@/components/ui/table";
 import { apiUrl } from "@/lib/utils";
-import { Edit, Package, PackageCheck } from "lucide-react";
-import Link from "next/link";
+import { Package, PackageCheck } from "lucide-react";
 import {formatDate} from "@/lib/date-utils";
 import { PriceRequest } from "@/models/price-request";
 import { ProcessStatusBadge } from "@/components/process-status-badge";

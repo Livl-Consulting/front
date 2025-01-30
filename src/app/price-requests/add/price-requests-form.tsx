@@ -1,6 +1,5 @@
 "use client";
 
-import { ClientPicker } from "@/components/client-picker";
 import { ProductPicker } from "@/components/product-picker";
 import { FieldErrors } from "@/components/ui/field-errors";
 import { Label } from "@/components/ui/label";

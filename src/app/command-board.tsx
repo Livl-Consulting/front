@@ -17,13 +17,11 @@ import {
   Users,
   Cat,
   FilePlus2,
-  CirclePlus,
   ShoppingCart,
   File,
   CircleHelp,
   Package,
   PackagePlus,
-  Calendar,
   CalendarCheck,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -126,11 +124,11 @@ export const CommandBoard = () => {
         <CommandGroup heading="Saisie de commandes - Achats">
           <CommandItem onSelect={() => push("/purchase-orders/add")}>
             <PackagePlus />
-            Saisir une commande d'achat
+            Saisir une commande d&apos;achat
           </CommandItem>
           <CommandItem onSelect={() => push("/purchase-orders")}>
             <Package />
-            Consulter mes commandes d'achats
+            Consulter mes commandes d&apos;achats
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />

@@ -61,10 +61,6 @@ export const ProductPicker: FC<Props> = ({
     );
   };
 
-  const inputProductName = (i: number) => {
-    return allowMultipleSelection ? `${name}[${i}][id]` : name;
-  }
-
   return (
     <>
       <MultiSelect
