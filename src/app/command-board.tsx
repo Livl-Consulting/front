@@ -1,5 +1,6 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import {
   Command,
   CommandEmpty,
@@ -22,6 +23,8 @@ import {
   CircleHelp,
   Package,
   PackagePlus,
+  Calendar,
+  CalendarCheck,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -41,6 +44,13 @@ export const CommandBoard = () => {
           <CommandItem onSelect={() => push("/products")}>
             <Puzzle />
             Mes produits
+          </CommandItem>
+        </CommandGroup>
+        <CommandGroup heading="Echéancier">
+          <CommandItem>
+            <CalendarCheck />
+            <Badge variant="destructive">TODO</Badge>
+            Consulter mes échéances
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
@@ -83,10 +93,12 @@ export const CommandBoard = () => {
         <CommandGroup heading="Règlement de vente">
           <CommandItem>
             <FilePlus2 />
+            <Badge variant="destructive">TODO</Badge>
             Créer un règlement
           </CommandItem>
           <CommandItem>
             <File />
+            <Badge variant="destructive">TODO</Badge>
             Consulter mes règlements
           </CommandItem>
         </CommandGroup>
