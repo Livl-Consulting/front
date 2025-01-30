@@ -10,7 +10,9 @@ const fields = {
     purchaseOrderId: z.number().nonnegative(),
     notes: z.string().optional(),
     amount: z.number().nonnegative(),
-}
+    paymentDate: z.string().refine(val => !isNaN(Date.parse(val)), {
+        message: "Invalid date",
+    }).optional(),}
 
 const schema = z.object(fields);
 
@@ -25,15 +27,15 @@ export const addSupplierPayment= async (prevState: FormState<typeof fields>, for
 
     try {
         const response = await fetch(`${apiUrl()}/supplier-payments`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(validated.data),
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify(validated.data),
         });
 
         if (!response.ok) {
-            const message = await response.text();
-            console.log(response);
-            throw new Error(`${response.statusText} : ${message}`);
+           const message = await response.text();
+           console.log(response);
+           throw new Error(`${response.statusText} : ${message}`);
         }
 
     } catch (error) {

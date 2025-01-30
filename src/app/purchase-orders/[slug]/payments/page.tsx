@@ -31,6 +31,7 @@ export default async function Page({ params }: { params: Promise<{ slug: number 
           <TableRow>
             <TableHead>Méthode</TableHead>
             <TableHead>Notes</TableHead>
+            <TableHead>Date du paiement</TableHead>
             <TableHead className="text-right">Montant</TableHead>
           </TableRow>
         </TableHeader>
@@ -39,13 +40,14 @@ export default async function Page({ params }: { params: Promise<{ slug: number 
             <TableRow key={payment.id}>
               <TableCell>{labelsPaymentMethod[payment.paymentMethod]}</TableCell>
               <TableCell>{payment.notes || "—"}</TableCell>
+              <TableCell>{payment.paymentDate}</TableCell>
               <TableCell className="text-right">{payment.amount} €</TableCell>
             </TableRow>
           ))}
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={2}>Total payé:</TableCell>
+            <TableCell colSpan={3}>Total payé:</TableCell>
             <TableCell className="text-right">{totalPaid} €</TableCell>
           </TableRow>
         </TableFooter>
