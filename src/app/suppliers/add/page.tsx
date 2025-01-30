@@ -4,7 +4,7 @@ import { SupplierForm } from "./supplier-form";
 export default function Page() {
   return (
     <div className="flex flex-col">
-      <HeaderTitle goBackUrlLink="/suppliers" title="Ajouter un fournisseur" />
+      <HeaderTitle title="Ajouter un fournisseur" />
       <SupplierForm />
     </div>
   );

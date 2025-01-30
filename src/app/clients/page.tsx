@@ -23,7 +23,7 @@ export default async function Page() {
 
   return (
     <>
-      <HeaderTitle goBackUrlLink="/" title="Clients" />
+      <HeaderTitle  title="Clients" />
       <Table>
         <TableCaption>Vos clients</TableCaption>
         <TableHeader>

@@ -36,7 +36,7 @@ export default async function Page() {
  
   return (
     <>
-      <HeaderTitle goBackUrlLink="/" title="Demandes de prix" />
+      <HeaderTitle title="Demandes de prix" />
       <Table>
         <TableCaption>Vos saisies de demandes de prix</TableCaption>
         <TableHeader>

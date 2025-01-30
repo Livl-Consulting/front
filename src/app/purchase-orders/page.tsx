@@ -36,7 +36,7 @@ export default async function Page() {
  
   return (
     <>
-      <HeaderTitle goBackUrlLink="/" title="Commandes d'achats" />
+      <HeaderTitle  title="Commandes d'achats" />
       <Table>
         <TableCaption>Vos commandes - Flux achats</TableCaption>
         <TableHeader>

@@ -29,7 +29,7 @@ import { labelsBySaleOrderStatus } from "@/models/labels-by-sale-order-status";
   
     return (
       <>
-        <HeaderTitle goBackUrlLink="/" title="Commandes de ventes" />
+        <HeaderTitle  title="Commandes de ventes" />
         <Table>
           <TableCaption>Vos commandes</TableCaption>
           <TableHeader>

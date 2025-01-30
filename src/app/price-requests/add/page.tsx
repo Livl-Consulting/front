@@ -4,7 +4,7 @@ import { PriceRequestForm } from "./price-requests-form";
 export default function Page() {
   return (
     <div className="flex flex-col">
-      <HeaderTitle goBackUrlLink="/price-requests" title="Ajouter une demande de prix" />
+      <HeaderTitle title="Ajouter une demande de prix" />
       <PriceRequestForm />
     </div>
   );

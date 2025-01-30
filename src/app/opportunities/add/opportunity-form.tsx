@@ -5,7 +5,6 @@ import { ProductPicker } from "@/components/product-picker";
 import { FieldErrors } from "@/components/ui/field-errors";
 import { Label } from "@/components/ui/label";
 import { SubmitButton } from "@/components/ui/submit-button";
-import { addOpportunity } from "@/lib/actions/add-opportunity.action.ts";
 import { Opportunity } from "@/models/opportunity";
 import { FC, useActionState } from "react";
 import {Input} from "@/components/ui/input";
@@ -17,6 +16,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import {labelsByProcessStatus} from "@/models/labels-by-opportunity-status";
+import { addOpportunity } from "@/lib/actions/add-opportunity.action";
 
 export const OpportunityForm: FC<{
   opportunity?: Opportunity;

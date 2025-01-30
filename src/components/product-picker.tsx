@@ -73,7 +73,7 @@ export const ProductPicker: FC<Props> = ({
         onSelectionChange={onAddProduct}
         onInputChange={setSearch}
         value={search}
-        placeholder="Ajouter un produit ..."
+        placeholder={ allowMultipleSelection ? "Sélectionner un ou plusieurs produits" : "Sélectionner un produit" }
         leading={<SearchIcon className="w-4 h-4 text-muted-foreground" />}
         addLabel={`Ajouter "${search}"`}
       />

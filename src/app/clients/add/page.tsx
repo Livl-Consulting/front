@@ -4,7 +4,7 @@ import { ClientForm } from "./client-form";
 export default function Page() {
   return (
     <div className="flex flex-col">
-      <HeaderTitle goBackUrlLink="/clients" title="Ajouter un client" />
+      <HeaderTitle title="Ajouter un client" />
       <ClientForm />
     </div>
   );

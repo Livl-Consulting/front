@@ -25,7 +25,7 @@ export default async function Page({ params }: { params: Promise<{ slug: number 
 
   return (
     <div className="flex flex-col gap-8 ">
-      <HeaderTitle goBackUrlLink={`/purchase-orders`} title={`Paiment commande n°${orderPurchase.id}`} />
+      <HeaderTitle title={`Paiment commande n°${orderPurchase.id}`} />
       <Table>
         <TableHeader>
           <TableRow>

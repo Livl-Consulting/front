@@ -26,7 +26,7 @@ import { labelsByProcessStatus } from "@/models/labels-by-opportunity-status";
   
     return (
       <>
-        <HeaderTitle goBackUrlLink="/" title="Devis" />
+        <HeaderTitle  title="Devis" />
         <Table>
           <TableCaption>Vos devis</TableCaption>
           <TableHeader>

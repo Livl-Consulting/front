@@ -26,7 +26,7 @@ export default async function Page() {
 
   return (
     <>
-      <HeaderTitle goBackUrlLink="/" title="Opportunités" />
+      <HeaderTitle title="Opportunités" />
       <Table>
         <TableCaption>Vos opportunités</TableCaption>
         <TableHeader>
