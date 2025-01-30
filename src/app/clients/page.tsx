@@ -13,6 +13,8 @@ import {formatDate} from "@/lib/date-utils";
 import { HeaderTitle } from "@/components/header-title";
 
 export default async function Page() {
+  console.log("API_URL", apiUrl());
+  console.log(`${apiUrl()}/clients`)
   const response = await fetch(`${apiUrl()}/clients`);
 
   if (!response.ok) {
