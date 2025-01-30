@@ -13,12 +13,15 @@ import { Button } from "@/components/ui/button";
 import { EllipsisVertical } from "lucide-react";
 import { createQuoteFromOpportunity } from "@/lib/fetch/create-quote-from-opportunity.fetch";
 import { cancelOpportunity } from "@/lib/fetch/cancel-opportunity.fetch";
+import { Quote } from "@/models/quote";
+import { createOrderFromQuote } from "@/lib/fetch/create-order-from-quote.fetch";
+import { cancelQuote } from "@/lib/fetch/cancel-quote.fetch";
 
-type OpportunityActionProps = {
-  opportunity: Opportunity;
+type QuoteActionProps = {
+  quote: Quote;
 };
 
-export default function OpportunityAction({ opportunity }: OpportunityActionProps) {
+export default function QuoteAction({ quote }: QuoteActionProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -32,14 +35,14 @@ export default function OpportunityAction({ opportunity }: OpportunityActionProp
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem 
-          onClick={() => createQuoteFromOpportunity(opportunity.id)} 
-          disabled={opportunity.status !== "progress"}>
-          <span>Valider en devis</span>
+          onClick={() => createOrderFromQuote(quote.id)} 
+          disabled={quote.status !== "progress"}>
+          <span>Créer la commande</span>
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => cancelOpportunity(opportunity.id)}
-          disabled={opportunity.status !== "progress"}>
-          <span>Annuler opportunité</span>
+          onClick={() => cancelQuote(quote.id)}
+          disabled={quote.status !== "progress"}>
+          <span>Annuler devis</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

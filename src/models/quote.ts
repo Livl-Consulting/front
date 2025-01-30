@@ -2,6 +2,7 @@ import { Client } from "./client";
 import { Opportunity } from "./opportunity";
 import { ProcessStatus } from "./process-status.type";
 import { Product } from "./product";
+import { SaleOrder } from "./sale-order";
 
 export type Quote = {
     id: number;
@@ -16,5 +17,6 @@ export type Quote = {
     price: number;
     opportunityId: number;
     opportunity: Opportunity;
-    // order: Order;
+    order: SaleOrder;
+    orderId: number;
 }

@@ -22,6 +22,7 @@ const badgeVariants = cva(
             "border-transparent bg-red-400 text-primary-foreground hover:bg-red-400/80",
         outline: "text-foreground",
         received: "border-transparent bg-orange-400 text-primary-foreground",
+        delivered: "border-transparent bg-green-400 text-primary-foreground",
         invoiced: "border-transparent bg-purple-400 text-primary-foreground",
       },
     },

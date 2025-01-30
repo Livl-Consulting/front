@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation';
 const fields = {
     paymentMethod : z.enum(['cash', 'check', 'credit_card', 'bank_transfer', 'paypal', 'other']),
     purchaseOrderId: z.number().nonnegative(),
-    notes: z.string().optional(),
+    notes: z.any().optional(),
     amount: z.number().nonnegative(),
     paymentDate: z.string().refine(val => !isNaN(Date.parse(val)), {
         message: "Invalid date",

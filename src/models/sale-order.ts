@@ -1,14 +1,13 @@
 import { Client } from "@/models/client";
 import { Product } from "./product";
-import {ProcessStatus} from "@/models/process-status.type";
 import { Quote } from "./quote";
+import { SaleOrderStatus } from "./sale-order-status";
 
-export type Opportunity = {
+export type SaleOrder = {
     id: number;
     createdAt: Date;
     updatedAt: Date;
-    successProbability: number;
-    status: ProcessStatus;
+    status: SaleOrderStatus;
     clientId: number;
     client: Client;
     productId: number;

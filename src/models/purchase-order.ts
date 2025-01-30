@@ -1,5 +1,5 @@
 import { ProductWithPurchaseOrderPivot } from "./product";
-import { PurchaseOrderStatus } from "./purchase-order-status";
+import { PurchaseOrderStatus } from "./pruchase-order-status";
 import { Supplier } from "./supplier";
 import { SupplierPayment } from "./supplier-payment";
 

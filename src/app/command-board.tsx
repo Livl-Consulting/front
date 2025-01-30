@@ -65,23 +65,19 @@ export const CommandBoard = () => {
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Devis de vente">
-          <CommandItem>
+          <CommandItem onSelect={() => push("/quotes/add")}>
             <FilePlus2 />
             Créer un devis
           </CommandItem>
-          <CommandItem>
+          <CommandItem onSelect={() => push("/quotes")}>
             <File />
             Consulter mes devis
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Commandes de vente">
-          <CommandItem>
-            <CirclePlus />
-            Créer une commande
-          </CommandItem>
-          <CommandItem>
+          <CommandItem onSelect={() => push("/sales-orders")}>
             <ShoppingCart />
-            Consulter mes commandes
+            Consulter mes commandes de ventes
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Règlement de vente">
@@ -118,11 +114,11 @@ export const CommandBoard = () => {
         <CommandGroup heading="Saisie de commandes - Achats">
           <CommandItem onSelect={() => push("/purchase-orders/add")}>
             <PackagePlus />
-            Saisir une commande
+            Saisir une commande d'achat
           </CommandItem>
           <CommandItem onSelect={() => push("/purchase-orders")}>
             <Package />
-            Consulter mes commandes
+            Consulter mes commandes d'achats
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
