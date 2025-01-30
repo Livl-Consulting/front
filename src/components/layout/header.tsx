@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "../theme-toggle";
 
 const NavLinks = () => {
     const pathname = usePathname();
@@ -47,8 +48,7 @@ export default function Header() {
             <NavLinks />
           </div>
           <div className="flex items-center gap-4">
-            
-            
+            <ThemeToggle />
           </div>
         </div>
       </header>
