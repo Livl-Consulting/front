@@ -85,7 +85,7 @@ export default function HelpPage() {
             <AccordionItem value="item-8">
               <AccordionTrigger>Comment effectuer ou consulter mes paiements ?</AccordionTrigger>
               <AccordionContent>
-                pour accédez aux paiements (de ventes ou achat), cliquez sur &quot;Effectuer un paiement&quot; / &quot;Saisir règlement de ventes&quot; sur le bouton d&apos;action de la page qui affiche la liste des commandes.
+                Pour accédez aux paiements (de ventes ou achat), cliquez sur &quot;Effectuer un paiement&quot; / &quot;Saisir règlement de ventes&quot; sur le bouton d&apos;action de la page qui affiche la liste des commandes.
 
                 Pour effectuer un paiement, vous devez saisir le montant et la date du paiement, et choisissez le mode de paiement (virement, carte, chèque). Vous pouvez effectuer autant de paiements que nécessaire. Une fois la commande entièrement payée, elle sera marquée comme &quot;Facturée&quot;. 
               </AccordionContent>
