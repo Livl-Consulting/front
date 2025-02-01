@@ -7,11 +7,12 @@ import {
 } from "@/components/ui/accordion";
 import { labelsByProductsType } from "@/models/labels-by-products-type";
 import { ProcessStatusBadge } from "@/components/process-status-badge";
+import { HeaderTitle } from "@/components/header-title";
 
 export default function HelpPage() {
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Aide & Documentation</h1>
+      <HeaderTitle title="Aide & Documentation" />
       <Card>
         <CardContent>
           <p className="my-5">
