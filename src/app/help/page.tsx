@@ -97,9 +97,9 @@ export default function HelpPage() {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-10">
-              <AccordionTrigger>Puis-je mettre n'importe quel prix quand je choisis un produit ?</AccordionTrigger>
+              <AccordionTrigger>Puis-je mettre n&apos;importe quel prix quand je choisis un produit ?</AccordionTrigger>
               <AccordionContent>
-                Que se soit pour le module de Vente (opportunité, devis et commande) ainsi que le module d&apos;Achat (demande de prix et commande), le prix n'est pas fixé et vous pouvez le modifier à votre guise. Cette fonctionnalité peut être modifiée dans le futur en fonction des besoins, mais nous avions pensé que cela pourrait être utile pour des négociations de prix. Néanmoins, lors d'une transformation de devis en commande de ventes, ou de demande de prix en commande d&apos;achats, le prix du produit sera automatiquement repris.
+                Que se soit pour le module de Vente (opportunité, devis et commande) ainsi que le module d&apos;Achat (demande de prix et commande), le prix n&apos;est pas fixé et vous pouvez le modifier à votre guise. Cette fonctionnalité peut être modifiée dans le futur en fonction des besoins, mais nous avions pensé que cela pourrait être utile pour des négociations de prix. Néanmoins, lors d&apos;une transformation de devis en commande de ventes, ou de demande de prix en commande d&apos;achats, le prix du produit sera automatiquement repris.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-11">
