@@ -42,9 +42,11 @@ export default async function Page() {
         <TableHeader>
           <TableRow>
             <TableHead className="text-center">N°</TableHead>
+            <TableHead className="texte-center">Demande de prix</TableHead>
             <TableHead className="text-center">Status</TableHead>
             <TableHead>Fournisseur</TableHead>
             <TableHead>Date achat</TableHead>
+            <TableHead className="text-center">Prix total</TableHead>
             <TableHead className="text-center">Produits commandés</TableHead>
             <TableHead className="text-center">Bon commande</TableHead>
             <TableHead>Actions</TableHead>
@@ -54,6 +56,7 @@ export default async function Page() {
           {purchaseOrders.map((purchaseOrder) => (
             <TableRow key={purchaseOrder.id}>
               <TableCell className="text-center">{purchaseOrder.id}</TableCell>
+              <TableCell className="text-center">{purchaseOrder.priceRequestId || '-'}</TableCell>
               <TableCell className="text-center">
                 <ProcessStatusBadge status={purchaseOrder.status} props={labelsByPurchaseOrderStatus[purchaseOrder.status]} />
               </TableCell>
@@ -61,6 +64,7 @@ export default async function Page() {
                 {purchaseOrder.supplier.firstName} {purchaseOrder.supplier.lastName}
               </TableCell>
               <TableCell>{formatDate(purchaseOrder.createdAt)}</TableCell>
+              <TableCell className="text-center">{purchaseOrder.totalAmount}€</TableCell>
               <TableCell className="text-center">
                 <Dialog>
                   <DialogTrigger asChild>

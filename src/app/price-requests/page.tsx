@@ -43,7 +43,7 @@ export default async function Page() {
             <TableHead className="text-center">N°</TableHead>
             <TableHead className="text-center">Status</TableHead>
             <TableHead>Fournisseur</TableHead>
-            <TableHead>Produits demandés</TableHead>
+            <TableHead className="text-center">Produits demandés</TableHead>
             <TableHead>Mise à jour</TableHead>
             <TableHead className="text-right">Actions</TableHead>
           </TableRow>
@@ -58,7 +58,7 @@ export default async function Page() {
               <TableCell className="font-medium">
                 {priceRequest.supplier.firstName} {priceRequest.supplier.lastName}
               </TableCell>
-              <TableCell>
+              <TableCell className="text-center">
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="outline">

@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { FormState } from '../form-state';
 import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 const fields = {
     status : z.enum(['progress', 'received', 'invoiced', 'cancelled']),
@@ -27,7 +28,7 @@ export const addPurchaseOrder= async (prevState: FormState<typeof fields>, formD
     }
 
     try {
-        const response = await fetch(`${apiUrl()}/price-requests`, {
+        const response = await fetch(`${apiUrl()}/purchase-orders`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(validated.data),
@@ -43,5 +44,6 @@ export const addPurchaseOrder= async (prevState: FormState<typeof fields>, formD
         return { success: false, message: (error as Error).message };
     }
 
+    revalidatePath('/purchase-orders');
     redirect('/purchase-orders');
 }

@@ -14,8 +14,8 @@ export type Quote = {
     client: Client;
     productId: number;
     product: Product;
-    price: number;
-    opportunityId: number;
+    price?: number;
+    opportunityId?: number;
     opportunity: Opportunity;
     order: SaleOrder;
     orderId: number;
