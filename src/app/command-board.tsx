@@ -83,21 +83,9 @@ export const CommandBoard = () => {
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Commandes de vente">
-          <CommandItem onSelect={() => push("/sales-orders")}>
+          <CommandItem onSelect={() => push("/sale-orders")}>
             <ShoppingCart />
             Consulter mes commandes de ventes
-          </CommandItem>
-        </CommandGroup>
-        <CommandGroup heading="Règlement de vente">
-          <CommandItem>
-            <FilePlus2 />
-            <Badge variant="destructive">TODO</Badge>
-            Créer un règlement
-          </CommandItem>
-          <CommandItem>
-            <File />
-            <Badge variant="destructive">TODO</Badge>
-            Consulter mes règlements
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />

@@ -1,4 +1,5 @@
 import {Opportunity} from "@/models/opportunity";
+import { SaleOrder } from "./sale-order";
 
 export type Client = {
     id: number;
@@ -9,4 +10,5 @@ export type Client = {
     companyName?: string;
     email: string;
     opportunities: Opportunity[];
+    orders: SaleOrder[];
 }

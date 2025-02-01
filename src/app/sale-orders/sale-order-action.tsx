@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { EllipsisVertical } from "lucide-react";
 import { cancelSaleOrder } from "@/lib/fetch/cancel-sale-order.fetch";
 import { SaleOrder } from "@/models/sale-order";
+import Link from "next/link";
 
 type SaleOrderActionProps = {
   saleOrder: SaleOrder;
@@ -30,6 +31,11 @@ export default function SaleOrderAction({ saleOrder }: SaleOrderActionProps) {
       <DropdownMenuContent>
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
+        <DropdownMenuItem disabled={saleOrder.status === "cancelled"}>
+            <Link href={`/sale-orders/${saleOrder.id}/payments`}>
+                <span>Créer un règlement de ventes</span>
+            </Link>
+        </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => cancelSaleOrder(saleOrder.id)}
           disabled={saleOrder.status !== "progress"}>

@@ -15,4 +15,5 @@ export type SaleOrder = {
     price: number;
     quote: Quote[]
     quoteId: number;
+    clientPayments: SaleOrder[]
 }
