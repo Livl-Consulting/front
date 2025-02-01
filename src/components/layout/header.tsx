@@ -11,11 +11,12 @@ const NavLinks = () => {
       { href: '/products', label: 'Products' },
       { href: '/suppliers', label: 'Fournisseurs' },
       { href: '/clients', label: 'Clients' },
+      { href: '/help' , label: 'Aide' },
     ];
   
     return (
     //   <nav className="ml-10 hidden items-center gap-4 text-sm sm:flex xl:gap-6"> if you want to hide the navlinks on small screens
-    <nav className="ml-10 items-center  text-sm flex gap-6">
+    <nav className="sm:ml-10 items-center text-sm flex sm:gap-6 gap-3">
         {links.map((link) => (
           <Link
             key={link.label}

@@ -23,6 +23,7 @@ import {
   Package,
   PackagePlus,
   CalendarCheck,
+  HelpCircle,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -117,6 +118,13 @@ export const CommandBoard = () => {
           <CommandItem onSelect={() => push("/purchase-orders")}>
             <Package />
             Consulter mes commandes d&apos;achats
+          </CommandItem>
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Aide & Documentation">
+          <CommandItem onSelect={() => push("/help")}>
+            <HelpCircle />
+            Consulter l&apos;aide
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
