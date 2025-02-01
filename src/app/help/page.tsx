@@ -77,15 +77,17 @@ export default function HelpPage() {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-7">
-              <AccordionTrigger>Comment générer un document PDF de confirmation ?</AccordionTrigger>
+              <AccordionTrigger>Comment générer un document PDF depuis une commande ?</AccordionTrigger>
               <AccordionContent>
-                Pour chaque commandes, soit de vente ou d&apos;achat, vous pouvez générer un PDF en cliquant sur &quot;Bon de commande&quot; ou &quot;Confirmation de commande&quot;
+                Pour chaque commande, soit de vente ou d&apos;achat, vous pouvez générer un document PDF en cliquant sur &quot;Bon de commande&quot; ou &quot;Confirmation de commande&quot;
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-8">
-              <AccordionTrigger>Comment effectuer un paiement ?</AccordionTrigger>
+              <AccordionTrigger>Comment effectuer ou consulter mes paiements ?</AccordionTrigger>
               <AccordionContent>
-                Accédez à la commande, cliquez sur &quot;Effectuer un paiement&quot; / &quot;Saisir règlement de ventes&quot; et choisissez le mode de paiement (virement, carte, chèque).
+                pour accédez aux paiements (de ventes ou achat), cliquez sur &quot;Effectuer un paiement&quot; / &quot;Saisir règlement de ventes&quot; sur le bouton d&apos;action de la page qui affiche la liste des commandes.
+
+                Pour effectuer un paiement, vous devez saisir le montant et la date du paiement, et choisissez le mode de paiement (virement, carte, chèque). Vous pouvez effectuer autant de paiements que nécessaire. Une fois la commande entièrement payée, elle sera marquée comme &quot;Facturée&quot;. 
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-9">
@@ -94,6 +96,19 @@ export default function HelpPage() {
                 Dans le module &quot;Demandes de prix&quot;, saisissez une nouvelle demande en sélectionnant un fournisseur et les articles souhaités. Vous pouvez transformer cette demande en commande d&apos;achat.
               </AccordionContent>
             </AccordionItem>
+            <AccordionItem value="item-10">
+              <AccordionTrigger>Puis-je mettre n'importe quel prix quand je choisis un produit ?</AccordionTrigger>
+              <AccordionContent>
+                Que se soit pour le module de Vente (opportunité, devis et commande) ainsi que le module d&apos;Achat (demande de prix et commande), le prix n'est pas fixé et vous pouvez le modifier à votre guise. Cette fonctionnalité peut être modifiée dans le futur en fonction des besoins, mais nous avions pensé que cela pourrait être utile pour des négociations de prix. Néanmoins, lors d'une transformation de devis en commande de ventes, ou de demande de prix en commande d&apos;achats, le prix du produit sera automatiquement repris.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-11">
+              <AccordionTrigger>Transformer une opportunité, un devis ou une demande de prix en commande</AccordionTrigger>
+              <AccordionContent>
+                Pour transformer une opportunité, un devis ou une demande de prix en commande (de vente ou achat), cliquez sur &quot;Transformer en commande&quot; qui se trouve dans le bouton d&apos;action de chaque élément.
+                Par exemple, pour transformer un devis en commande de vente, rendez-vous sur la page des devis, cliquez sur le bouton d&apos;action &quot;Transformer en commande&quot; du devis souhaité, et le devis sera automatiquement transformé en commande de vente avec les mêmes informations.
+                </AccordionContent> 
+              </AccordionItem>
           </Accordion>
         </CardContent>
       </Card>
