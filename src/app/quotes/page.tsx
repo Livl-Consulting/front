@@ -50,7 +50,7 @@ import { labelsByProcessStatus } from "@/models/labels-by-opportunity-status";
                   <ProcessStatusBadge status={quote.status} props={labelsByProcessStatus[quote.status]} />
                 </TableCell>
                 <TableCell className="font-medium">
-                  {quote.client.firstName} {quote.client.lastName}{" "}
+                  {quote.client.firstName} {quote.client.lastName} ({quote.client.companyName})
                 </TableCell>
                 <TableCell className="font-medium">{quote.product.name}</TableCell>
                 <TableCell>{quote.product.price}€</TableCell>

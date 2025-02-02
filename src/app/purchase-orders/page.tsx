@@ -61,7 +61,7 @@ export default async function Page() {
                 <ProcessStatusBadge status={purchaseOrder.status} props={labelsByPurchaseOrderStatus[purchaseOrder.status]} />
               </TableCell>
               <TableCell className="font-medium">
-                {purchaseOrder.supplier.firstName} {purchaseOrder.supplier.lastName}
+                {purchaseOrder.supplier.firstName} {purchaseOrder.supplier.lastName} ({purchaseOrder.supplier.companyName})
               </TableCell>
               <TableCell>{formatDate(purchaseOrder.createdAt)}</TableCell>
               <TableCell className="text-center">{purchaseOrder.totalAmount}€</TableCell>

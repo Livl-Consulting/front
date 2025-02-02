@@ -50,7 +50,7 @@ export default async function Page() {
                 <ProcessStatusBadge status={opportunity.status} props={labelsByProcessStatus[opportunity.status]} />
               </TableCell>
               <TableCell className="font-medium">
-                {opportunity.client.firstName} {opportunity.client.lastName}{" "}
+                {opportunity.client.firstName} {opportunity.client.lastName} ({opportunity.client.companyName})
               </TableCell>
               <TableCell className="font-medium">{opportunity.product.name}</TableCell>
               <TableCell>{opportunity.product.price}€</TableCell>

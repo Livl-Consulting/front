@@ -52,7 +52,7 @@ import { labelsBySaleOrderStatus } from "@/models/labels-by-sale-order-status";
                   <ProcessStatusBadge status={saleOrder.status} props={labelsBySaleOrderStatus[saleOrder.status]} />
                 </TableCell>
                 <TableCell className="font-medium">
-                  {saleOrder.client.firstName} {saleOrder.client.lastName}{" "}
+                  {saleOrder.client.firstName} {saleOrder.client.lastName} ({saleOrder.client.companyName})
                 </TableCell>
                 <TableCell className="font-medium">{saleOrder.product.name}</TableCell>
                 <TableCell className="text-center">{saleOrder.price}€</TableCell>

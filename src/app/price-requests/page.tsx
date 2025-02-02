@@ -56,7 +56,7 @@ export default async function Page() {
                 <ProcessStatusBadge status={priceRequest.status} props={labelsByProcessStatus[priceRequest.status]} />
               </TableCell>
               <TableCell className="font-medium">
-                {priceRequest.supplier.firstName} {priceRequest.supplier.lastName}
+                {priceRequest.supplier.firstName} {priceRequest.supplier.lastName} ({priceRequest.supplier.companyName})
               </TableCell>
               <TableCell className="text-center">
                 <Dialog>
