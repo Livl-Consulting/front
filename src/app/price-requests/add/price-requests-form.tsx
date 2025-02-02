@@ -44,7 +44,7 @@ export const PriceRequestForm: FC<{
                       {
                           Object.entries(labelsByProcessStatus).map(([key, value]) => {
                               return (
-                                  <SelectItem id={key} key={key} value={key}>{value}</SelectItem>
+                                  <SelectItem id={key} key={key} value={key} disabled={key !== "progress"}>{value}</SelectItem>
                               )
                           })
                       }

@@ -58,7 +58,7 @@ export const QuoteForm: FC<{
                       {
                           Object.entries(labelsByProcessStatus).map(([key, value]) => {
                               return (
-                                  <SelectItem key={key} value={key}>{value}</SelectItem>
+                                  <SelectItem key={key} value={key} disabled={key !== "progress"}>{value}</SelectItem>
                               )
                           })
                       }
