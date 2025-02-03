@@ -48,7 +48,6 @@ export const CommandBoard = () => {
         <CommandGroup heading="Echéancier">
           <CommandItem onSelect={() => push("/timeline")}>
             <CalendarCheck />
-            <Badge variant="destructive">TODO</Badge>
             Consulter mes échéances
           </CommandItem>
         </CommandGroup>
