@@ -5,6 +5,7 @@ import { HeaderTitle } from "@/components/header-title";
 import { SaleOrder } from "@/models/sale-order";
 import { ClientPayment } from "@/models/client-payment";
 import { ClientPaymentsForm } from "./client-payments-form";
+import {getTotalDue} from "@/lib/payment-utils";
 
 export default async function Page({ params }: { params: Promise<{ slug: number }>}) {
   const saleOrderId = (await params).slug;
@@ -19,9 +20,8 @@ export default async function Page({ params }: { params: Promise<{ slug: number 
 
   const payments = await response.json() as ClientPayment[];
 
-  const totalAmount = orderSale.product.price;
   const totalPaid = payments.reduce((acc, payment) => acc + payment.amount, 0);
-  const totalDue = totalAmount - totalPaid;
+  const totalDue = getTotalDue(orderSale.product.price, payments);
 
   return (
     <div className="flex flex-col gap-8 ">
