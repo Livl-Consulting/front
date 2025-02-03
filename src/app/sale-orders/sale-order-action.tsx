@@ -13,6 +13,7 @@ import { EllipsisVertical } from "lucide-react";
 import { cancelSaleOrder } from "@/lib/fetch/cancel-sale-order.fetch";
 import { SaleOrder } from "@/models/sale-order";
 import Link from "next/link";
+import {updateSaleOrder} from "@/lib/fetch/update-sale-order.fetch";
 
 type SaleOrderActionProps = {
   saleOrder: SaleOrder;
@@ -31,6 +32,15 @@ export default function SaleOrderAction({ saleOrder }: SaleOrderActionProps) {
       <DropdownMenuContent>
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
+          {
+            saleOrder.status === "progress" && (
+              <DropdownMenuItem
+                onClick={() => updateSaleOrder(saleOrder.id, 'delivered')}
+                >
+                <span>Marquer la commande comme livré</span>
+              </DropdownMenuItem>
+              )
+          }
         <DropdownMenuItem disabled={saleOrder.status === "cancelled"}>
             <Link href={`/sale-orders/${saleOrder.id}/payments`}>
                 <span>Créer un règlement de ventes</span>

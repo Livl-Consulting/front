@@ -13,6 +13,7 @@ import { EllipsisVertical } from "lucide-react";
 import { PurchaseOrder } from "@/models/purchase-order";
 import { cancelPurchaseOrder } from "@/lib/fetch/cancel-purchase-order.fetch";
 import Link from "next/link";
+import {updatePurchaseOrder} from "@/lib/fetch/update-purchase-order.fetch";
 
 type PurchaseOrderActionProps = {
   purchaseOrder: PurchaseOrder;
@@ -31,6 +32,15 @@ export default function PurchaseOrderAction({ purchaseOrder }: PurchaseOrderActi
       <DropdownMenuContent>
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
+          {
+              purchaseOrder.status === "progress" && (
+              <DropdownMenuItem
+                  onClick={() => updatePurchaseOrder(purchaseOrder.id, 'received')}
+                  disabled={purchaseOrder.status !== "progress"}>
+                  <span>Marquer comme réceptionné</span>
+              </DropdownMenuItem>
+              )
+          }
         <DropdownMenuItem disabled={purchaseOrder.status === "cancelled"}>
             <Link href={`/purchase-orders/${purchaseOrder.id}/payments`}>
                 <span>Procéder au paiement</span>
