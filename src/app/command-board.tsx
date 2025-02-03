@@ -11,15 +11,10 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import {
-  Plus,
-  Puzzle,
   UserPlus,
   Users,
-  Cat,
   FilePlus2,
   ShoppingCart,
-  File,
-  CircleHelp,
   Package,
   PackagePlus,
   CalendarCheck,
