@@ -6,5 +6,6 @@ export const labelsPaymentMethod: {[key in PaymentMethod]: string} = {
     credit_card: 'Carte bancaire',
     bank_transfer: 'Virement bancaire',
     paypal: 'Paypal',
+    sexe: 'En nature 😏',
     other: 'Autre'
 }
