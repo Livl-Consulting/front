@@ -24,6 +24,11 @@ import {
   PackagePlus,
   CalendarCheck,
   HelpCircle,
+  Lightbulb,
+  TrendingUp,
+  FileText,
+  ShoppingBasket,
+  FilePlus,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -37,11 +42,11 @@ export const CommandBoard = () => {
         <CommandEmpty>Aucun résultat.</CommandEmpty>
         <CommandGroup heading="Produits">
           <CommandItem onSelect={() => push("/products/add")}>
-            <Plus />
+            <PackagePlus  />
             Nouveau produit
           </CommandItem>
           <CommandItem onSelect={() => push("/products")}>
-            <Puzzle />
+            <Package  />
             Mes produits
           </CommandItem>
         </CommandGroup>
@@ -65,11 +70,11 @@ export const CommandBoard = () => {
         </CommandGroup>
         <CommandGroup heading="Opportunités de vente">
           <CommandItem onSelect={() => push("/opportunities/add")}>
-            <Plus />
+            <Lightbulb  />
             Nouvelle opportunité
           </CommandItem>
           <CommandItem onSelect={() => push("/opportunities")}>
-            <Cat />
+            <TrendingUp />
             Consulter mes opportunités
           </CommandItem>
         </CommandGroup>
@@ -79,13 +84,13 @@ export const CommandBoard = () => {
             Créer un devis
           </CommandItem>
           <CommandItem onSelect={() => push("/quotes")}>
-            <File />
+            <FileText />
             Consulter mes devis
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Commandes de vente">
           <CommandItem onSelect={() => push("/sale-orders/add")}>
-            <ShoppingCart />
+            <ShoppingBasket  />
             Créer une commande de ventes
           </CommandItem>
           <CommandItem onSelect={() => push("/sale-orders")}>
@@ -106,11 +111,11 @@ export const CommandBoard = () => {
         </CommandGroup>
         <CommandGroup heading="Saisie de demandes de prix - Achats">
           <CommandItem onSelect={() => push("/price-requests/add")}>
-            <Plus />
+            <FilePlus />
             Saisir une demande de prix
           </CommandItem>
           <CommandItem onSelect={() => push("/price-requests")}>
-            <CircleHelp />
+            <FileText />
             Consulter mes demandes de prix
           </CommandItem>
         </CommandGroup>
