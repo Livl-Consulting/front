@@ -42,13 +42,14 @@ export default async function Page() {
         <TableHeader>
           <TableRow>
             <TableHead className="text-center">N°</TableHead>
-            <TableHead className="texte-center">Demande de prix</TableHead>
+            <TableHead className="text-center">Demande de prix</TableHead>
             <TableHead className="text-center">Status</TableHead>
-            <TableHead>Fournisseur</TableHead>
-            <TableHead>Date achat</TableHead>
+            <TableHead className="text-center">Fournisseur</TableHead>
+            <TableHead className="text-center">Date achat</TableHead>
             <TableHead className="text-center">Prix total</TableHead>
             <TableHead className="text-center">Produits commandés</TableHead>
             <TableHead className="text-center">Bon commande</TableHead>
+            <TableHead className="text-center">Echéance</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -60,10 +61,10 @@ export default async function Page() {
               <TableCell className="text-center">
                 <ProcessStatusBadge status={purchaseOrder.status} props={labelsByPurchaseOrderStatus[purchaseOrder.status]} />
               </TableCell>
-              <TableCell className="font-medium">
+              <TableCell className="font-medium text-center">
                 {purchaseOrder.supplier.firstName} {purchaseOrder.supplier.lastName} ({purchaseOrder.supplier.companyName})
               </TableCell>
-              <TableCell>{formatDate(purchaseOrder.createdAt)}</TableCell>
+              <TableCell className="text-center">{formatDate(purchaseOrder.createdAt)}</TableCell>
               <TableCell className="text-center">{purchaseOrder.totalAmount}€</TableCell>
               <TableCell className="text-center">
                 <Dialog>
@@ -112,6 +113,7 @@ export default async function Page() {
                   </DialogContent>
                 </Dialog>
               </TableCell>
+              <TableCell className="text-center">{formatDate(purchaseOrder.dueDate)}</TableCell>
               <TableCell>
                 <PurchaseOrderAction purchaseOrder={purchaseOrder} />
               </TableCell>

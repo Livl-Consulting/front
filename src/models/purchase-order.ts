@@ -13,6 +13,7 @@ export type PurchaseOrder = {
     priceRequestId?: number;
     priceRequest?: PriceRequest;
     supplierId: number;
+    dueDate: Date;
     supplier: Supplier;
     products: ProductWithPurchaseOrderPivot[];
     supplierPayments: SupplierPayment[]

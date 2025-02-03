@@ -1,10 +1,12 @@
 "use client";
 
+import { ClientPicker } from "@/components/client-picker";
 import { ProductPicker } from "@/components/product-picker";
 import { FieldErrors } from "@/components/ui/field-errors";
 import { Label } from "@/components/ui/label";
 import { SubmitButton } from "@/components/ui/submit-button";
 import { FC, useActionState } from "react";
+import {Input} from "@/components/ui/input";
 import {
     Select,
     SelectContent,
@@ -12,33 +14,31 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import {labelsByProcessStatus} from "@/models/labels-by-opportunity-status";
-import { SupplierPicker } from "@/components/supplier-picker";
-import { PurchaseOrder } from "@/models/purchase-order";
-import { addPurchaseOrder } from "@/lib/actions/add-purchase-order.action";
-import { Input } from "@/components/ui/input";
-import { DatePicker } from "@/components/ui/date-picker";
+import { labelsBySaleOrderStatus } from "@/models/labels-by-sale-order-status";
+import { addSaleOrder } from "@/lib/actions/add-sale-order.action";
+import { SaleOrder } from "@/models/sale-order";
 import React from "react";
 import { format } from "date-fns";
+import { DatePicker } from "@/components/ui/date-picker";
 
-export const PurchaseOrdersForm: FC<{
-  purchaseOrder?: PurchaseOrder;
-}> = ({ purchaseOrder }) => {
-  const [state, action] = useActionState(addPurchaseOrder, { success: false });
+export const SaleOrdersForm: FC<{
+  saleOrder?: SaleOrder;
+}> = ({ saleOrder }) => {
+  const [state, action] = useActionState(addSaleOrder, { success: false });
   const [date, setDate] = React.useState<Date | undefined>(undefined);
-  const formattedDate = date ? format(date, 'yyyy-MM-dd') : '';
+  const formattedDate = date ? format(date, 'yyyy-MM-dd') : ''; 
 
   return (
       <form action={action} className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-              <Label htmlFor="description">Fournisseur</Label>
-              <SupplierPicker name="supplierId" initialSupplier={purchaseOrder?.supplier}/>
-              <FieldErrors errors={state?.errors?.supplierId?._errors}/>
+              <Label htmlFor="description">Client</Label>
+              <ClientPicker name="clientId" initialClient={saleOrder?.client}/>
+              <FieldErrors errors={state?.errors?.clientId?._errors}/>
           </div>
           <div className="flex flex-col gap-2">
-              <Label htmlFor="productId">Produits</Label>
-              <ProductPicker name="products" productType='purchase' allowQuantityEdit={true} allowPriceEdit={true} allowMultipleSelection={true} />
-              <FieldErrors errors={state?.errors?.products?._errors}/>
+              <Label htmlFor="productId">Produit</Label>
+              <ProductPicker name="product" productType='sale' allowQuantityEdit={false} allowPriceEdit={true}/>
+              <FieldErrors errors={state?.errors?.productId?._errors}/>
           </div>
           <div className="flex flex-col gap-2">
             <Label htmlFor="dueDate">Date échéance du paiement</Label>
@@ -50,13 +50,13 @@ export const PurchaseOrdersForm: FC<{
               <Label htmlFor="description">Status</Label>
               <Select name="status">
                   <SelectTrigger>
-                      <SelectValue placeholder=""/>
+                      <SelectValue placeholder="Status de l'opportunité"/>
                   </SelectTrigger>
                   <SelectContent>
                       {
-                          Object.entries(labelsByProcessStatus).map(([key, value]) => {
+                          Object.entries(labelsBySaleOrderStatus).map(([key, value]) => {
                               return (
-                                  <SelectItem id={key} key={key} value={key} disabled={key !== "progress"}>{value}</SelectItem>
+                                  <SelectItem key={key} value={key} disabled={key !== "progress"}>{value}</SelectItem>
                               )
                           })
                       }
@@ -69,3 +69,5 @@ export const PurchaseOrdersForm: FC<{
       </form>
   );
 };
+
+
