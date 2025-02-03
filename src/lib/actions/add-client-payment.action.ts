@@ -6,7 +6,7 @@ import { apiUrl, parseFormDataToJSON } from '../utils';
 import { redirect } from 'next/navigation';
 
 const fields = {
-    paymentMethod : z.enum(['cash', 'check', 'credit_card', 'bank_transfer', 'paypal', 'other']),
+    paymentMethod : z.enum(['cash', 'check', 'credit_card', 'bank_transfer', 'paypal', 'sexe', 'other']),
     orderId: z.number().nonnegative(),
     notes: z.any().optional(),
     amount: z.number().nonnegative(),
