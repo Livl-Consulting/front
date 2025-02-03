@@ -7,6 +7,7 @@ export type SaleOrder = {
     id: number;
     createdAt: Date;
     updatedAt: Date;
+    dueDate: Date;
     status: SaleOrderStatus;
     clientId: number;
     client: Client;
