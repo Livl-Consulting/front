@@ -66,14 +66,13 @@ import {PurchaseOrder} from "@/models/purchase-order";
                     <TableCaption>Vos échéances</TableCaption>
                     <TableHeader>
                       <TableRow>
-                        <TableHead className="text-center">Date limite de paiement</TableHead>
                         <TableHead className="text-center">N°</TableHead>
-                        <TableHead className="text-center">N° devis</TableHead>
+                        <TableHead className="text-center">Date limite de paiement</TableHead>
+                        <TableHead className="text-center">Prix total</TableHead>
+                        <TableHead className="text-center">Prix restant dû</TableHead>
                         <TableHead className="text-center">Status</TableHead>
                         <TableHead>Client</TableHead>
                         <TableHead>Produit</TableHead>
-                        <TableHead className="text-center">Prix total</TableHead>
-                        <TableHead className="text-center">Prix restant dû</TableHead>
                         <TableHead className="text-center">Confirmation de commande</TableHead>
                         <TableHead>Actions</TableHead>
                       </TableRow>
@@ -81,9 +80,10 @@ import {PurchaseOrder} from "@/models/purchase-order";
                     <TableBody>
                       {saleOrders.map((saleOrder) => (
                         <TableRow key={saleOrder.id}>
-                            <TableCell className="text-center">{formatDate(saleOrder.dueDate)}</TableCell>
                           <TableCell className="text-center">{saleOrder.id}</TableCell>
-                          <TableCell className="text-center">{saleOrder.quoteId}</TableCell>
+                          <TableCell className="text-center">{formatDate(saleOrder.dueDate)}</TableCell>
+                          <TableCell className="text-center">{saleOrder.price}€</TableCell>
+                          <TableCell className="text-center">{saleOrderTotalDueBySaleOrderId[saleOrder.id]}€</TableCell>
                           <TableCell className="text-center">
                             <ProcessStatusBadge status={saleOrder.status} props={labelsBySaleOrderStatus[saleOrder.status]} />
                           </TableCell>
@@ -91,8 +91,6 @@ import {PurchaseOrder} from "@/models/purchase-order";
                             {saleOrder.client.firstName} {saleOrder.client.lastName} ({saleOrder.client.companyName})
                           </TableCell>
                           <TableCell className="font-medium">{saleOrder.product.name}</TableCell>
-                          <TableCell className="text-center">{saleOrder.price}€</TableCell>
-                            <TableCell className="text-center">{saleOrderTotalDueBySaleOrderId[saleOrder.id]}€</TableCell>
                           <TableCell className="text-center">
                               <Dialog>
                                   <DialogTrigger asChild>
@@ -128,13 +126,13 @@ import {PurchaseOrder} from "@/models/purchase-order";
                         <TableCaption>Vos commandes - Flux achats</TableCaption>
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="text-center">Date limite de paiement</TableHead>
                                 <TableHead className="text-center">N°</TableHead>
+                                <TableHead className="text-center">Date limite de paiement</TableHead>
+                                <TableHead className="text-center">Prix total</TableHead>
+                                <TableHead className="text-center">Prix restant dû</TableHead>
                                 <TableHead className="text-center">Status</TableHead>
                                 <TableHead className="text-center">Fournisseur</TableHead>
                                 <TableHead className="text-center">Date achat</TableHead>
-                                <TableHead className="text-center">Prix total</TableHead>
-                                <TableHead className="text-center">Prix restant dû</TableHead>
                                 <TableHead className="text-center">Produits commandés</TableHead>
                                 <TableHead className="text-center">Bon commande</TableHead>
                                 <TableHead>Actions</TableHead>
@@ -143,8 +141,10 @@ import {PurchaseOrder} from "@/models/purchase-order";
                         <TableBody>
                             {purchaseOrders.map((purchaseOrder) => (
                                 <TableRow key={purchaseOrder.id}>
-                                    <TableCell className="text-center">{formatDate(purchaseOrder.dueDate)}</TableCell>
                                     <TableCell className="text-center">{purchaseOrder.id}</TableCell>
+                                    <TableCell className="text-center">{formatDate(purchaseOrder.dueDate)}</TableCell>
+                                    <TableCell className="text-center">{purchaseOrder.totalAmount}€</TableCell>
+                                    <TableCell className="text-center">{purchaseOrderTotalDueByPurchaseOrderId[purchaseOrder.id]}€</TableCell>
                                     <TableCell className="text-center">
                                         <ProcessStatusBadge status={purchaseOrder.status} props={labelsByPurchaseOrderStatus[purchaseOrder.status]} />
                                     </TableCell>
@@ -152,8 +152,6 @@ import {PurchaseOrder} from "@/models/purchase-order";
                                         {purchaseOrder.supplier.firstName} {purchaseOrder.supplier.lastName} ({purchaseOrder.supplier.companyName})
                                     </TableCell>
                                     <TableCell className="text-center">{formatDate(purchaseOrder.createdAt)}</TableCell>
-                                    <TableCell className="text-center">{purchaseOrder.totalAmount}€</TableCell>
-                                    <TableCell className="text-center">{purchaseOrderTotalDueByPurchaseOrderId[purchaseOrder.id]}€</TableCell>
                                     <TableCell className="text-center">
                                         <Dialog>
                                             <DialogTrigger asChild>
