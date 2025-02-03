@@ -7,21 +7,18 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 
 const fields = {
-    status : z.enum(['progress', 'received', 'invoiced', 'cancelled']),
-    supplierId: z.number().nonnegative(),
+    status : z.enum(['progress', 'delivered', 'invoiced', 'cancelled']),
+    clientId: z.number().nonnegative(),
     dueDate: z.string().refine(val => !isNaN(Date.parse(val)), {
         message: "Invalid date",
     }),
-    products: z.array(z.object({
-        id: z.number().nonnegative(),
-        quantity: z.number().nonnegative().min(1),
-        unit_price: z.number().nonnegative(),
-    })),
+    productId: z.number().nonnegative(),
+    price: z.number({ message: "Insérez un prix" }).nonnegative(),
 }
 
 const schema = z.object(fields);
 
-export const addPurchaseOrder= async (prevState: FormState<typeof fields>, formData: FormData): Promise<FormState<typeof fields>> => {
+export const addSaleOrder= async (prevState: FormState<typeof fields>, formData: FormData): Promise<FormState<typeof fields>> => {
 
     const validated = schema.safeParse(parseFormDataToJSON(formData));
 
@@ -31,7 +28,7 @@ export const addPurchaseOrder= async (prevState: FormState<typeof fields>, formD
     }
 
     try {
-        const response = await fetch(`${apiUrl()}/purchase-orders`, {
+        const response = await fetch(`${apiUrl()}/orders`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(validated.data),
@@ -43,10 +40,10 @@ export const addPurchaseOrder= async (prevState: FormState<typeof fields>, formD
         }
 
     } catch (error) {
-        console.error("Fail to sikish the purchase order", error);
+        console.error("Fail to sikish the sale order", error);
         return { success: false, message: (error as Error).message };
     }
 
-    revalidatePath('/purchase-orders');
-    redirect('/purchase-orders');
+    revalidatePath('/sale-orders');
+    redirect('/sale-orders');
 }

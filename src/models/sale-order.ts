@@ -11,6 +11,7 @@ export type SaleOrder = {
     clientId: number;
     client: Client;
     productId: number;
+    dueDate: Date;
     product: Product;
     price: number;
     quote: Quote[]

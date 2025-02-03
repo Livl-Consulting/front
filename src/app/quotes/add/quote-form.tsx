@@ -64,7 +64,7 @@ export const QuoteForm: FC<{
                       }
                   </SelectContent>
               </Select>
-              <FieldErrors errors={state?.errors?.successProbability?._errors}/>
+              <FieldErrors errors={state?.errors?.status?._errors}/>
           </div>
           <SubmitButton>Enregistrer</SubmitButton>
           <FieldErrors errors={state.message ? [state.message] : []}/>

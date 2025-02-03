@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import SaleOrderAction from "./sale-order-action";
 import { FileText } from "lucide-react";
 import { labelsBySaleOrderStatus } from "@/models/labels-by-sale-order-status";
+import { formatDate } from "@/lib/date-utils";
   
   export default async function Page() {
     const response = await fetch(`${apiUrl()}/orders`, { cache: "no-cache" });
@@ -40,6 +41,7 @@ import { labelsBySaleOrderStatus } from "@/models/labels-by-sale-order-status";
               <TableHead>Produit</TableHead>
               <TableHead className="text-center">Prix</TableHead>
               <TableHead className="text-center">Confirmation de commande</TableHead>
+              <TableHead className="text-center">Echéance</TableHead>
               <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -47,7 +49,7 @@ import { labelsBySaleOrderStatus } from "@/models/labels-by-sale-order-status";
             {saleOrders.map((saleOrder) => (
               <TableRow key={saleOrder.id}>
                 <TableCell className="text-center">{saleOrder.id}</TableCell>
-                <TableCell className="text-center">{saleOrder.quoteId}</TableCell>
+                <TableCell className="text-center">{saleOrder.quoteId || '-'}</TableCell>
                 <TableCell className="text-center">
                   <ProcessStatusBadge status={saleOrder.status} props={labelsBySaleOrderStatus[saleOrder.status]} />
                 </TableCell>
@@ -75,6 +77,7 @@ import { labelsBySaleOrderStatus } from "@/models/labels-by-sale-order-status";
                         </DialogContent>
                     </Dialog>
                 </TableCell>
+                <TableCell className="text-center">{formatDate(saleOrder.dueDate)}</TableCell>
                 <TableCell>
                   <SaleOrderAction saleOrder={saleOrder} />
                 </TableCell>
