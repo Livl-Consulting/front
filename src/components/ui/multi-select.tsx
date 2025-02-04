@@ -35,7 +35,6 @@ export const MultiSelect: React.FC<Props> = ({
   onInputChange,
   value,
   className,
-  addLabel = "Ajouter",
   placeholder = "...",
   leading,
 }) => {
