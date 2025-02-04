@@ -148,31 +148,31 @@ export const MultiSelect: React.FC<Props> = ({
                   <CommandSeparator />
                 </>
               ) : null}
-              {inputValue ? (
-                <CommandGroup>
-                  <CommandItem
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    onSelect={() => {
-                      if (!inputValue) {
-                        return;
-                      }
+              {/*{inputValue ? (*/}
+              {/*  <CommandGroup>*/}
+              {/*    <CommandItem*/}
+              {/*      onMouseDown={(e) => {*/}
+              {/*        e.preventDefault();*/}
+              {/*        e.stopPropagation();*/}
+              {/*      }}*/}
+              {/*      onSelect={() => {*/}
+              {/*        if (!inputValue) {*/}
+              {/*          return;*/}
+              {/*        }*/}
 
-                      setInputValue("");
-                      onSelectionChange([
-                        ...selection,
-                        { value: inputValue, label: inputValue },
-                      ]);
-                    }}
-                    className={"cursor-pointer"}
-                  >
-                    <PlusCircle className="w-4 h-4 mr-2" />
-                    {addLabel}
-                  </CommandItem>
-                </CommandGroup>
-              ) : null}
+              {/*        setInputValue("");*/}
+              {/*        onSelectionChange([*/}
+              {/*          ...selection,*/}
+              {/*          { value: inputValue, label: inputValue },*/}
+              {/*        ]);*/}
+              {/*      }}*/}
+              {/*      className={"cursor-pointer"}*/}
+              {/*    >*/}
+              {/*      <PlusCircle className="w-4 h-4 mr-2" />*/}
+              {/*      {addLabel}*/}
+              {/*    </CommandItem>*/}
+              {/*  </CommandGroup>*/}
+              {/*) : null}*/}
             </div>
           ) : null}
         </CommandList>
