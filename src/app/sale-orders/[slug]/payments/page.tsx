@@ -21,7 +21,7 @@ export default async function Page({ params }: { params: Promise<{ slug: number 
   const payments = await response.json() as ClientPayment[];
 
   const totalPaid = payments.reduce((acc, payment) => acc + payment.amount, 0);
-  const totalDue = getTotalDue(orderSale.product.price, payments);
+  const totalDue = getTotalDue(orderSale.price, payments);
 
   return (
     <div className="flex flex-col gap-8 ">
