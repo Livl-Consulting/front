@@ -63,7 +63,7 @@ import {PurchaseOrder} from "@/models/purchase-order";
                 <AccordionTrigger>Commande de vente</AccordionTrigger>
                 <AccordionContent>
                   <Table>
-                    <TableCaption>Vos échéances</TableCaption>
+                    <TableCaption>Échéancier - Commande de vente</TableCaption>
                     <TableHeader>
                       <TableRow>
                         <TableHead className="text-center">N°</TableHead>
@@ -123,7 +123,7 @@ import {PurchaseOrder} from "@/models/purchase-order";
                 <AccordionTrigger>Commande d&#39;achat</AccordionTrigger>
                 <AccordionContent>
                     <Table>
-                        <TableCaption>Vos commandes - Flux achats</TableCaption>
+                        <TableCaption>Échéancier - Commande d&#39;achat</TableCaption>
                         <TableHeader>
                             <TableRow>
                                 <TableHead className="text-center">N°</TableHead>
