@@ -110,6 +110,55 @@ export default function HelpPage() {
                 Par exemple, pour transformer un devis en commande de vente, rendez-vous sur la page des devis, cliquez sur le bouton d&apos;action &quot;Transformer en commande&quot; du devis souhaité, et le devis sera automatiquement transformé en commande de vente avec les mêmes informations.
                 </AccordionContent> 
               </AccordionItem>
+            <AccordionItem value="item-12">
+              <AccordionTrigger>La recette du poulet chasseur (le meilleur)</AccordionTrigger>
+              <AccordionContent>
+                Si vous aimez le poulet cacciatore, vous adorerez son cousin français, tout en sauce, nommé poulet
+                chasseur. Cette recette qui provient de l’autre côté de l’Atlantique est un mets classique, copieux et
+                rassasiant.
+                <br/>
+                <p className="font-bold text-xl pt-4">Ingrédients :</p>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>375 ml (1 1/2 tasse) de bouillon de bœuf</li>
+                  <li>14 g (1/2 oz) de bolets séchés</li>
+                  <li>4 cuisses de poulet</li>
+                  <li>15 ml (1 c. à soupe) d’huile d’olive</li>
+                  <li>225 g (1/2 lb) de champignons blancs, coupés en quatre</li>
+                  <li>225 g (1/2 lb) de pleurotes, émincés</li>
+                  <li>30 ml (2 c. à soupe) de beurre</li>
+                  <li>1 oignon, haché</li>
+                  <li>2 gousses d’ail, hachées</li>
+                  <li>30 ml (2 c. à soupe) de farine tout usage non blanchie</li>
+                  <li>125 ml (1/2 tasse) de vin blanc sec</li>
+                  <li>1 petite tomate, épépinée et coupée en dés</li>
+                  <li>5 ml (1 c. à thé) d’estragon frais, ciselé</li>
+                </ul>
+                <p className="font-bold text-xl pt-4">Préparation :</p>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>Dans une petite casserole, porter le bouillon à ébullition. Retirer du feu. Ajouter les bolets
+                    séchés et laisser reposer 15 minutes pour réhydrater les champignons. Égoutter. Réserver le bouillon
+                    et les champignons séparément.
+                  </li>
+                  <li>Entre-temps, retirer la peau des cuisses de poulet. À l’aide d’un couteau, couper les cuisses en
+                    deux, en séparant les hauts de cuisses et les pilons.
+                  </li>
+                  <li>Dans une grande cocotte, à feu moyen-élevé, dorer le poulet dans l’huile de chaque côté. Saler et
+                    poivrer. Réserver dans un bol. Déglacer la cocotte avec 60 ml (1/4 tasse) du bouillon en raclant le
+                    fond à la cuillère de bois. Verser sur le poulet.
+                  </li>
+                  <li>Dans la même cocotte à feu moyen-élevé, dorer les champignons frais dans le beurre. Ajouter les
+                    champignons réhydratés, l’oignon et l’ail. Poursuivre la cuisson 2 minutes. Saupoudrer de la farine
+                    et bien enrober. Déglacer avec le vin et laisser réduire de moitié en remuant délicatement à l’aide
+                    d’un fouet. Ajouter le reste du bouillon, la tomate et le poulet réservé. Porter à ébullition.
+                    Couvrir et laisser mijoter 1 heure à feu doux.
+                  </li>
+                  <li>Retirer le couvercle, puis laisser réduire la sauce 5 minutes ou jusqu’à ce qu’elle nappe le dos
+                    d’une cuillère. Rectifier l’assaisonnement. Ajouter l’estragon et servir avec des pâtes au beurre,
+                    si désiré.
+                  </li>
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
         </CardContent>
       </Card>
