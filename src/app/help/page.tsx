@@ -159,6 +159,12 @@ export default function HelpPage() {
                 </ul>
               </AccordionContent>
             </AccordionItem>
+            <AccordionItem value="item-13">
+              <AccordionTrigger>Tier-list des élèves de la classe</AccordionTrigger>
+              <AccordionContent>
+                TODO !
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
         </CardContent>
       </Card>
