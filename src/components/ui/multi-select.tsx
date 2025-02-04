@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { PlusCircle, X } from "lucide-react";
+import { X } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import {
